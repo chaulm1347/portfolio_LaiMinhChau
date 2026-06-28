@@ -3,6 +3,8 @@ export { default as HeroSection } from "./HeroSection";
 export { default as SkillsSection } from "./SkillsSection";
 export { default as ExperienceTimeline } from "./ExperienceTimeline";
 export { default as ProjectsSection } from "./ProjectsSection";
+export { default as LeadershipSection } from "./LeadershipSection";
+export { default as EducationSection } from "./EducationSection";
 export { default as ContactFooter } from "./ContactFooter";
 export { default as SectionHeader } from "./SectionHeader";
 export { default as SkillTag } from "./SkillTag";

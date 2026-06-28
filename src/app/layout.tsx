@@ -20,26 +20,26 @@ const nunito = Nunito({
 });
 
 export const metadata: Metadata = {
-  title: "Le Duy Khanh - The Fullstack Hero | Portfolio",
+  title: "Lại Minh Châu - Product Owner | Portfolio",
   description:
-    "Portfolio of Le Duy Khanh - A versatile Product Engineer with expertise in ReactJS, NestJS, .NET, and VoIP systems. Specializing in fullstack development and microservices architecture.",
+    "Portfolio of Lại Minh Châu - Product Owner & Delivery Coordinator. B2B AI product delivery, partner ecosystem development, and cross-functional coordination.",
   keywords: [
-    "Fullstack Developer",
-    "Le Duy Khanh",
-    "ReactJS",
-    "NestJS",
-    ".NET",
-    "TypeScript",
+    "Product Owner",
+    "Lại Minh Châu",
+    "Delivery Coordinator",
+    "Product Management",
+    "Business Analyst",
+    "Go-to-Market",
+    "Stakeholder Management",
     "Portfolio",
-    "Product Engineer",
-    "VoIP",
-    "Microservices",
+    "B2B",
+    "AI Product",
   ],
-  authors: [{ name: "Le Duy Khanh" }],
+  authors: [{ name: "Lại Minh Châu" }],
   openGraph: {
-    title: "Le Duy Khanh - The Fullstack Hero",
+    title: "Lại Minh Châu - Product Owner",
     description:
-      "A versatile Product Engineer with expertise in ReactJS, NestJS, and .NET",
+      "Product Owner & Delivery Coordinator — B2B AI product delivery and partner ecosystem development.",
     type: "website",
   },
 };

@@ -1,18 +1,17 @@
-// Hero data extracted from CV - Le Duy Khanh Portfolio
+// Portfolio data - Lại Minh Châu (Product Owner / Delivery Coordinator)
 export interface ContactInfo {
     phone: string;
     email: string;
     location: string;
-    github: string;
+    experience: string;
 }
 
 export interface Skills {
+    product: string[];
+    partnership: string[];
+    operations: string[];
+    tools: string[];
     languages: string[];
-    backend: string[];
-    frontend: string[];
-    realtime: string[];
-    database: string[];
-    ops: string[];
 }
 
 export interface Experience {
@@ -35,152 +34,93 @@ export interface Project {
     link?: string;
 }
 
-export interface SkillDetailed {
-    name: string;
-    category: 'backend' | 'frontend' | 'languages' | 'realtime' | 'database' | 'ops';
-    years: number;
-    level: number; // 0-100
-    desc: string;
-}
-
 export interface HeroData {
     name: string;
     title: string;
     alias: string;
     contact: ContactInfo;
     summary: string;
-    skillsDetailed: SkillDetailed[];
     skills: Skills;
     experience: Experience[];
     projects: Project[];
 }
 
 export const heroData: HeroData = {
-    name: "Lê Duy Khánh",
-    title: "FULLSTACK DEVELOPER",
-    alias: "The System Architect",
+    name: "Lại Minh Châu",
+    title: "PRODUCT OWNER",
+    alias: "Phát triển Sản phẩm · Điều phối Delivery · Quản lý Đa chức năng",
     contact: {
-        phone: "0398101219",
-        email: "khanhduy4569@gmail.com",
-        location: "Binh Tan, Ho Chi Minh City",
-        github: "github.com/leduykhanh1611",
+        phone: "(+84) 971 528 015",
+        email: "chau.lm1347@gmail.com",
+        location: "TP. Hồ Chí Minh",
+        experience: "4+ năm kinh nghiệm",
     },
     summary:
-        "Một Kỹ sư Sản phẩm đa năng (Versatile Product Engineer) với khả năng chiến đấu toàn diện trong vòng đời phát triển phần mềm. Thành thạo các vũ khí hạng nặng như ReactJS, NestJS và .NET. Chuyên gia phân tích nghiệp vụ phức tạp và chuyển hóa chúng thành các giải pháp kỹ thuật tối ưu.",
-    skillsDetailed: [
-        // Backend / Languages
-        { name: ".NET 8.0", category: "backend", years: 2, level: 85, desc: "ASP.NET Core, Entity Framework, Clean Architecture" },
-        { name: "NestJS", category: "backend", years: 1.5, level: 90, desc: "Node.js framework, Microservices, REST & GraphQL APIs" },
-        { name: "TypeScript", category: "languages", years: 2, level: 90, desc: "Type-safe JavaScript, Generics, Decorators" },
-        { name: "C#", category: "languages", years: 2, level: 80, desc: "OOP, LINQ, Async/Await patterns" },
-        { name: "SQL", category: "languages", years: 3, level: 85, desc: "T-SQL, PL/pgSQL, Query optimization" },
-
-        // Frontend
-        { name: "ReactJS", category: "frontend", years: 2, level: 85, desc: "Hooks, Context, Redux, Component architecture" },
-        { name: "Next.js", category: "frontend", years: 1, level: 80, desc: "SSR, App Router, API Routes, SEO optimization" },
-        { name: "Tailwind CSS", category: "frontend", years: 1.5, level: 90, desc: "Utility-first CSS, Responsive design, Custom themes" },
-
-        // Real-time & VoIP
-        { name: "LiveKit", category: "realtime", years: 0.5, level: 75, desc: "WebRTC SFU, Video/Audio streaming, SIP integration" },
-        { name: "FreeSWITCH", category: "realtime", years: 0.5, level: 70, desc: "VoIP PBX, SIP trunking, Call routing" },
-        { name: "WebRTC", category: "realtime", years: 1, level: 75, desc: "Real-time communication, Peer-to-peer, Signaling" },
-        { name: "Socket.io", category: "realtime", years: 1.5, level: 85, desc: "Real-time events, Rooms, Namespaces" },
-
-        // Database
-        { name: "PostgreSQL", category: "database", years: 2, level: 85, desc: "Advanced queries, Indexing, Partitioning" },
-        { name: "MongoDB", category: "database", years: 1.5, level: 80, desc: "Aggregation, Sharding, Replica sets" },
-        { name: "Redis", category: "database", years: 1.5, level: 85, desc: "Caching, Pub/Sub, Session management" },
-        { name: "Elasticsearch", category: "database", years: 1, level: 75, desc: "Full-text search, Analytics, 50+ filters" },
-
-        // DevOps
-        { name: "Docker", category: "ops", years: 2, level: 80, desc: "Containerization, Docker Compose, Multi-stage builds" },
-        { name: "GitHub Actions", category: "ops", years: 1, level: 75, desc: "CI/CD pipelines, Automated testing & deployment" },
-        { name: "Nginx", category: "ops", years: 1.5, level: 75, desc: "Reverse proxy, Load balancing, SSL termination" },
-    ],
+        "Không phải ai cũng có chức danh trước khi làm được việc — nhưng công việc luôn nói lên tất cả. Ở tuổi 25, tôi đã điều phối toàn bộ vòng đời delivery của một sản phẩm AI B2B và xây dựng hệ sinh thái đối tác từ con số không, đóng góp vào mức tăng trưởng doanh thu 50%. Tôi đang chủ động định hướng sự nghiệp sang lĩnh vực sản phẩm công nghệ — vì đó là công việc tôi đã thực sự làm.",
     skills: {
-        languages: ["C#", "TypeScript", "JavaScript", "SQL (T-SQL, PL/pgSQL)"],
-        backend: [".NET 8.0", "NestJS (Node.js)", "Clean Architecture", "Microservices"],
-        frontend: ["ReactJS", "NextJS", "Tailwind"],
-        realtime: ["LiveKit", "FreeSWITCH", "Socket.io", "WebRTC"],
-        database: ["PostgreSQL", "MSSQL", "MongoDB", "Redis", "Elasticsearch"],
-        ops: ["Docker", "Nginx", "GitHub Actions", "CI/CD"],
+        product: [
+            "Phân tích & Quản lý Yêu cầu",
+            "Quản lý Backlog & Ưu tiên hóa",
+            "Điều phối Đa chức năng",
+            "Quản lý Tiến độ & Mốc đích",
+            "Giao tiếp Stakeholder",
+            "Viết User Story",
+            "Tổ chức UAT & Triển khai",
+            "Ổn định Hậu triển khai",
+        ],
+        partnership: [
+            "Phối hợp Nhà cung cấp & Đối tác",
+            "Điều phối Go-to-Market",
+            "Vận hành Hệ sinh thái Đối tác",
+            "Phát triển Kênh & Cộng đồng",
+        ],
+        operations: [
+            "Thiết kế Quy trình & SOP",
+            "Theo dõi KPI / OKR",
+            "Báo cáo Dựa trên Dữ liệu",
+        ],
+        tools: ["Notion", "Excel / Google Sheets", "CRM", "Jira / Trello", "Zalo OA", "Figma"],
+        languages: ["Tiếng Việt — Bản ngữ", "Tiếng Anh — VSTEP B2 (~785 TOEIC)"],
     },
     experience: [
         {
             id: 1,
-            role: "Product Engineer",
+            role: "Điều phối Dự án & Triển khai",
             company: "Epacific Telecom",
-            period: "Apr 2025 - Present",
-            comicTitle: "THE VOICE VANGUARD",
-            mission: "Xây dựng hệ thống định tuyến cuộc gọi thông minh tích hợp AI Voice Agent.",
-            achievements: [
-                "Kiến tạo hệ thống B2B VoIP sử dụng FreeSWITCH & LiveKit xử lý hàng ngàn cuộc gọi mỗi ngày.",
-                "Kết nối thế giới WebRTC và SIP (FusionPBX) để chuyển giao mượt mà giữa AI và con người.",
-                "Giám sát hạ tầng 24/7, đảm bảo hệ thống bất khả xâm phạm.",
-                "Trực tiếp tham chiến hỗ trợ khách hàng MVP, xử lý sự cố production.",
-            ],
+            period: "2025 – Tháng 2/2026",
+            comicTitle: "AI VOICE AGENT — POC DOANH NGHIỆP ĐẦU TIÊN",
+            mission: "Điều phối toàn bộ delivery sản phẩm AI Voice Agent B2B tích hợp Call Center doanh nghiệp.",
+            achievements: [],
             color: "bg-yellow-300",
         },
         {
             id: 2,
-            role: "Tech Lead",
-            company: "CHUTA (Project: ALOPER)",
-            period: "Dec 2024 - Feb 2025",
-            comicTitle: "THE MICROSERVICES REVOLUTION",
-            mission: "Chỉ huy cuộc di cư vĩ đại từ .NET Monolith sang NestJS Microservices.",
-            achievements: [
-                "Tách rời các domain cốt lõi (User, Payment, Booking) giúp hệ thống mở rộng 20%.",
-                "Triển khai kiến trúc Event-Driven với Redis Pub/Sub, giải quyết vấn đề Race Conditions.",
-                "Lãnh đạo biệt đội 5 developers, áp dụng GitFlow và CI/CD giảm 40% thời gian release.",
-                "Thiết lập lá chắn chất lượng Code Review & Unit Testing.",
-            ],
+            role: "Trưởng phòng Phát triển Đối tác",
+            company: "Mat Bao Corp",
+            period: "Tháng 11/2024 – Tháng 9/2025",
+            comicTitle: "XÂY DỰNG HỆ SINH THÁI ĐỐI TÁC TỪ CON SỐ KHÔNG",
+            mission: "Xây dựng và vận hành hệ sinh thái đối tác B2B của công ty từ đầu.",
+            achievements: [],
             color: "bg-cyan-300",
         },
         {
             id: 3,
-            role: "Backend Developer",
-            company: "CHUTA (Project: ALOPER)",
-            period: "Aug 2024 - Nov 2024",
-            comicTitle: "THE FINTECH FOUNDATION",
-            mission: "Xây dựng động cơ tài chính chính xác tuyệt đối.",
-            achievements: [
-                "Chế tạo Module Tính Toán Hoa Hồng & Hợp Đồng với độ chính xác tài chính 100%.",
-                "Tối ưu hóa tìm kiếm Bất động sản với Elasticsearch (độ trễ < 200ms).",
-                "Thiết kế kiến trúc Hybrid Database (MSSQL + MongoDB) cân bằng giữa toàn vẹn dữ liệu và hiệu năng.",
-            ],
+            role: "Giám đốc Vận hành",
+            company: "IMARU Co., Ltd.",
+            period: "Giữa 2022 – Tháng 2/2024",
+            comicTitle: "HẠ TẦNG VẬN HÀNH CHO STARTUP GIAI ĐOẠN ĐẦU",
+            mission: "Xây dựng hạ tầng vận hành và triển khai dự án từ đầu cho một startup thương mại.",
+            achievements: [],
             color: "bg-pink-300",
         },
     ],
     projects: [
         {
-            title: "Car Care Center Manager",
-            role: "Team Leader",
-            tech: "Node.js, MongoDB, React Native, Redis",
-            desc: "Giải pháp chuyển đổi số toàn diện cho Garage ô tô.",
-            feat: "Thuật toán Service Timeline thời gian thực & Thanh toán PayOS.",
-            link: "github.com/leduykhanh1611/KLTN_BE",
-        },
-        {
-            title: "IELTS Prep Platform",
-            role: "Freelance Fullstack",
-            tech: "NestJS, ReactJS, PostgreSQL, Redis",
-            desc: "Nền tảng E-learning hiệu năng cao mô phỏng thi thật.",
-            feat: "Hệ thống chấm điểm tự động và phản hồi tức thì.",
-        },
-        {
-            title: "Comic Portfolio Website",
-            role: "Personal Project",
-            tech: "Next.js 14, TypeScript, Tailwind CSS",
-            desc: "Website portfolio cá nhân với giao diện comic độc đáo.",
-            feat: "Multi-language support, Comic-style animations & Responsive design.",
-            link: "github.com/leduykhanh1611/portfolioldk",
-        },
-        {
-            title: "E-commerce Mobile App",
-            role: "Mobile Developer",
-            tech: "React Native, Node.js, MongoDB, Firebase",
-            desc: "Ứng dụng mua sắm trực tuyến với thanh toán đa dạng.",
-            feat: "Push notifications, Order tracking & Payment gateway integration.",
+            title: "Game Giáo dục STEM",
+            role: "Product Owner & Business Analyst",
+            tech: "Vision Brief, GDD, MoSCoW, Vertical Slice, Playtest, AI Tools",
+            desc: "Dự án sản phẩm tự khởi xướng — dẫn dắt nhóm nhỏ đa chức năng qua toàn bộ vòng đời phát triển, từ ý tưởng đến prototype có thể chơi được.",
+            feat: "Demo web chạy được, đã playtest với người dùng thực tế.",
         },
     ],
 };

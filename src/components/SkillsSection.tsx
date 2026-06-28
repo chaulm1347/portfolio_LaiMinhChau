@@ -1,81 +1,82 @@
 "use client";
 
-import { Zap, Activity, Shield, Cpu, Database, Send } from "lucide-react";
+import { Zap, Target, Handshake, Workflow, Wrench, Languages } from "lucide-react";
 import { heroData } from "@/lib/data";
 import { useLanguage } from "@/context/LanguageContext";
 import SectionHeader from "./SectionHeader";
 
 const sectorConfig = [
     {
-        id: "core",
-        icon: Cpu,
-        label_vi: "HỆ THỐNG CỐT LÕI",
-        label_en: "CORE SYSTEMS",
-        skills: [...heroData.skills.backend, ...heroData.skills.languages],
+        id: "product",
+        icon: Target,
+        label_vi: "QUẢN LÝ SẢN PHẨM & DELIVERY",
+        label_en: "PRODUCT & DELIVERY",
+        skills: heroData.skills.product,
         color: "bg-comic-primary",
     },
     {
-        id: "interface",
-        icon: Shield,
-        label_vi: "GIAO DIỆN TÁC CHIẾN",
-        label_en: "BATTLE INTERFACE",
-        skills: heroData.skills.frontend,
+        id: "partnership",
+        icon: Handshake,
+        label_vi: "ĐỐI TÁC & GO-TO-MARKET",
+        label_en: "PARTNERSHIP & GTM",
+        skills: heroData.skills.partnership,
         color: "bg-white",
     },
     {
-        id: "comms",
-        icon: Activity,
-        label_vi: "TRUYỀN TIN SIÊU TỐC",
-        label_en: "RAPID COMMS",
-        skills: heroData.skills.realtime,
+        id: "operations",
+        icon: Workflow,
+        label_vi: "VẬN HÀNH & QUY TRÌNH",
+        label_en: "OPERATIONS & PROCESS",
+        skills: heroData.skills.operations,
         color: "bg-white",
     },
     {
-        id: "storage",
-        icon: Database,
-        label_vi: "KHO DỮ LIỆU TỐI MẬT",
-        label_en: "VAULT STORAGE",
-        skills: heroData.skills.database,
+        id: "tools",
+        icon: Wrench,
+        label_vi: "CÔNG CỤ",
+        label_en: "TOOLS",
+        skills: heroData.skills.tools,
         color: "bg-white",
     },
     {
-        id: "deployment",
-        icon: Send,
-        label_vi: "TRIỂN KHAI CHIẾN DỊCH",
-        label_en: "OPS DEPLOYMENT",
-        skills: heroData.skills.ops,
+        id: "languages",
+        icon: Languages,
+        label_vi: "NGÔN NGỮ",
+        label_en: "LANGUAGES",
+        skills: heroData.skills.languages,
         color: "bg-white",
     },
 ];
 
 export default function SkillsSection() {
     const { t, locale } = useLanguage();
+    const PrimaryIcon = sectorConfig[0].icon;
 
     return (
         <section className="mb-20">
             <SectionHeader title={t.superpowers} icon={Zap} color="bg-comic-primary" />
 
-            {/* Superhero Power Profile Wrapper */}
+            {/* Competency Profile Wrapper */}
             <div className="relative border-4 border-black bg-white p-2 comic-shadow">
                 <div className="absolute top-0 right-0 bg-black text-white text-[10px] px-2 font-mono uppercase z-10">
-                    Tech-Spec: v2.0.4
+                    Skill Matrix
                 </div>
 
                 {/* Main Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-2">
 
-                    {/* Sector A: Core Engine (Deep Green) */}
+                    {/* Sector A: Product & Delivery (Primary) */}
                     <div className="lg:col-span-12 xl:col-span-5 border-4 border-black bg-comic-primary p-6 flex flex-col justify-center">
                         <div className="flex items-center gap-3 mb-6">
                             {/* Yellow element accent box */}
                             <div className="p-2 bg-black border-2 border-comic-secondary text-comic-secondary rounded-none shadow-[2px_2px_0_0_rgba(250,204,21,1)]">
-                                <Cpu size={32} />
+                                <PrimaryIcon size={32} />
                             </div>
                             <div className="text-white">
                                 <h3 className="font-comic-header text-3xl leading-none">
                                     {locale === 'vi' ? sectorConfig[0].label_vi : sectorConfig[0].label_en}
                                 </h3>
-                                <span className="text-xs font-bold tracking-widest opacity-70">PRIMARY POWER ARCHITECTURE</span>
+                                <span className="text-xs font-bold tracking-widest opacity-70">PRODUCT & DELIVERY MANAGEMENT</span>
                             </div>
                         </div>
 
@@ -113,13 +114,10 @@ export default function SkillsSection() {
                     </div>
                 </div>
 
-                {/* Bottom Status Bar */}
-                <div className="mt-2 border-t-2 border-dashed border-black pt-2 flex justify-between items-center px-2">
-                    <div className="flex items-center gap-2">
-                        <div className="w-3 h-3 bg-comic-secondary animate-pulse border border-black shadow-[0_0_5px_rgba(250,204,21,0.5)]"></div>
-                        <span className="text-[10px] font-bold">SYSTEM STATUS: FULLY OPTIMIZED</span>
-                    </div>
-                    <div className="text-[10px] font-mono opacity-50">ENCRYPTED_AUTH: OK</div>
+                {/* Bottom Status Bar - Technical Literacy */}
+                <div className="mt-2 border-t-2 border-dashed border-black pt-2 flex items-start gap-2 px-2">
+                    <div className="w-3 h-3 mt-1 bg-comic-secondary animate-pulse border border-black shadow-[0_0_5px_rgba(250,204,21,0.5)] shrink-0"></div>
+                    <span className="text-[11px] font-bold leading-snug">{t.technicalLiteracy}</span>
                 </div>
             </div>
         </section>

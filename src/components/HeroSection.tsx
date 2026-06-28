@@ -1,6 +1,6 @@
 "use client";
 
-import { Shield, Phone, Mail, MapPin, Zap } from "lucide-react";
+import { Shield, Phone, Mail, MapPin, Clock, Zap } from "lucide-react";
 import { heroData } from "@/lib/data";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -60,7 +60,11 @@ export default function HeroSection() {
                         </p>
                         <p className="font-bold flex items-center gap-3">
                             <MapPin size={20} className="text-comic-secondary flex-shrink-0" />
-                            Binh Tan, HCM
+                            {heroData.contact.location}
+                        </p>
+                        <p className="font-bold flex items-center gap-3">
+                            <Clock size={20} className="text-comic-secondary flex-shrink-0" />
+                            {t.yearsExp}
                         </p>
                     </div>
                 </div>

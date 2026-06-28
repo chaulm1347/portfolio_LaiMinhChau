@@ -1,6 +1,6 @@
 "use client";
 
-import { Clock, Mic, Network, PhoneCall, Share2, GitBranch, Terminal, Database, Coins, Lock, Search, Cpu } from "lucide-react";
+import { Clock, Mic, Network, PhoneCall, Handshake, Users, Megaphone, Presentation, ClipboardList, Globe, TrendingUp, Workflow } from "lucide-react";
 import { heroData } from "@/lib/data";
 import { useLanguage } from "@/context/LanguageContext";
 import { experienceTranslations } from "@/lib/translations";
@@ -24,14 +24,14 @@ const RoleVisual = ({ id }: { id: number }) => {
             </div>
         );
     }
-    if (id === 2) { // CHUTA - TECH LEAD / MICROSERVICES
+    if (id === 2) { // MAT BAO - PARTNERSHIP & COMMUNITY
         return (
             <div className="mt-8 relative h-40 w-full flex items-center justify-center p-4">
                 <div className="grid grid-cols-2 gap-4 relative animate-[float_5s_ease-in-out_infinite]">
-                    <div className="p-2 border-2 border-black bg-white shadow-[2px_2px_0_0_black] text-comic-secondary animate-[wiggle_4s_ease-in-out_infinite]"><Share2 size={24} /></div>
-                    <div className="p-2 border-2 border-black bg-white shadow-[2px_2px_0_0_black] text-comic-secondary animate-[wiggle_5s_ease-in-out_infinite_0.5s]"><GitBranch size={24} /></div>
-                    <div className="p-2 border-2 border-black bg-white shadow-[2px_2px_0_0_black] text-comic-secondary animate-[wiggle_3s_ease-in-out_infinite_1s]"><Terminal size={24} /></div>
-                    <div className="p-2 border-2 border-black bg-comic-primary shadow-[2px_2px_0_0_black] animate-[wiggle_4s_ease-in-out_infinite_1.5s] text-comic-secondary"><Cpu size={24} /></div>
+                    <div className="p-2 border-2 border-black bg-white shadow-[2px_2px_0_0_black] text-comic-secondary animate-[wiggle_4s_ease-in-out_infinite]"><Handshake size={24} /></div>
+                    <div className="p-2 border-2 border-black bg-white shadow-[2px_2px_0_0_black] text-comic-secondary animate-[wiggle_5s_ease-in-out_infinite_0.5s]"><Users size={24} /></div>
+                    <div className="p-2 border-2 border-black bg-white shadow-[2px_2px_0_0_black] text-comic-secondary animate-[wiggle_3s_ease-in-out_infinite_1s]"><Megaphone size={24} /></div>
+                    <div className="p-2 border-2 border-black bg-comic-primary shadow-[2px_2px_0_0_black] animate-[wiggle_4s_ease-in-out_infinite_1.5s] text-comic-secondary"><Presentation size={24} /></div>
                     {/* Connecting lines */}
                     <div className="absolute top-1/2 left-0 w-full h-[2px] bg-black -z-10 opacity-10"></div>
                     <div className="absolute top-0 left-1/2 w-[2px] h-full bg-black -z-10 opacity-10"></div>
@@ -39,21 +39,21 @@ const RoleVisual = ({ id }: { id: number }) => {
             </div>
         );
     }
-    if (id === 3) { // CHUTA - BACKEND / FINTECH
+    if (id === 3) { // IMARU - OPERATIONS / INTERNATIONAL
         return (
             <div className="mt-8 flex flex-col items-center gap-4 animate-[float_3s_ease-in-out_infinite]">
                 <div className="relative group">
                     <div className="w-24 h-24 bg-white border-4 border-black rounded-lg flex items-center justify-center transform animate-[wiggle_6s_ease-in-out_infinite]">
-                        <Database size={40} className="text-comic-primary" />
+                        <ClipboardList size={40} className="text-comic-primary" />
                     </div>
                     {/* Yellow element accent */}
                     <div className="absolute -top-3 -right-3 bg-comic-secondary border-2 border-black p-1 shadow-[2px_2px_0_0_black] animate-bounce">
-                        <Lock size={16} />
+                        <TrendingUp size={16} />
                     </div>
                 </div>
                 <div className="flex gap-2">
-                    <div className="text-comic-secondary animate-bounce"><Coins size={20} /></div>
-                    <div className="text-comic-primary animate-[wiggle_2s_ease-in-out_infinite]"><Search size={20} /></div>
+                    <div className="text-comic-secondary animate-bounce"><Globe size={20} /></div>
+                    <div className="text-comic-primary animate-[wiggle_2s_ease-in-out_infinite]"><Workflow size={20} /></div>
                 </div>
                 <div className="w-full h-1 bg-black opacity-10"></div>
             </div>

@@ -5,6 +5,8 @@ import {
   SkillsSection,
   ExperienceTimeline,
   ProjectsSection,
+  LeadershipSection,
+  EducationSection,
   ContactFooter,
   LanguageSwitcher,
   PageDecorations,
@@ -31,13 +33,23 @@ export default function HomePage() {
 
         <SectionDivider />
 
-        {/* The Saga (Experience) */}
+        {/* Personal Project (flagship PO work) */}
+        <ProjectsSection />
+
+        <SectionDivider />
+
+        {/* Work Experience */}
         <ExperienceTimeline />
 
         <SectionDivider />
 
-        {/* Side Quests (Projects) */}
-        <ProjectsSection />
+        {/* Leadership & Community */}
+        <LeadershipSection />
+
+        <SectionDivider />
+
+        {/* Education */}
+        <EducationSection />
 
         <SectionDivider />
 
