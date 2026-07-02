@@ -2,6 +2,8 @@
 
 import {
   HeroSection,
+  EvolutionTree,
+  JourneyGallery,
   SkillsSection,
   ExperienceTimeline,
   ProjectsSection,
@@ -10,50 +12,44 @@ import {
   ContactFooter,
   LanguageSwitcher,
   PageDecorations,
-  SectionDivider,
 } from "@/components";
 
 export default function HomePage() {
   return (
     <>
-      {/* Page Decorations - Fixed position SVG illustrations */}
+      {/* Hoạt ảnh trang trí lơ lửng (giữ nguyên từ source gốc) */}
       <PageDecorations />
 
-      {/* Language Switcher - Fixed position */}
+      {/* Nút chuyển ngôn ngữ - cố định */}
       <LanguageSwitcher />
 
-      <main className="min-h-screen pb-20 px-4 md:px-6 lg:px-8 w-full lg:max-w-[80%] mx-auto relative z-10">
-        {/* Hero Header (Cover) */}
+      {/* Layout gốc: rộng, canh giữa (tối đa 80%) - không dùng khung 760px */}
+      <main className="min-h-screen pb-20 w-full lg:max-w-[80%] mx-auto relative z-10">
+        {/* Cover + Speech bubble */}
         <HeroSection />
 
-        <SectionDivider />
+        {/* Cây tiến hóa sự nghiệp */}
+        <EvolutionTree />
 
-        {/* Superpowers (Skills) */}
-        <SkillsSection />
+        {/* Gallery hành trình phát triển */}
+        <JourneyGallery />
 
-        <SectionDivider />
-
-        {/* Personal Project (flagship PO work) */}
+        {/* Dự án cá nhân (Flagship 4 tầng) */}
         <ProjectsSection />
 
-        <SectionDivider />
-
-        {/* Work Experience */}
+        {/* Các chương sự nghiệp */}
         <ExperienceTimeline />
 
-        <SectionDivider />
+        {/* Năng lực cốt lõi */}
+        <SkillsSection />
 
-        {/* Leadership & Community */}
+        {/* Lãnh đạo & cộng đồng */}
         <LeadershipSection />
 
-        <SectionDivider />
-
-        {/* Education */}
+        {/* Học vấn */}
         <EducationSection />
 
-        <SectionDivider />
-
-        {/* Footer with Contact */}
+        {/* CTA liên hệ */}
         <ContactFooter />
       </main>
     </>

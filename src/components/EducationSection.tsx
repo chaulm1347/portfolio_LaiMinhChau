@@ -1,49 +1,40 @@
 "use client";
 
-import { GraduationCap, BookOpen, Building2 } from "lucide-react";
+import { GraduationCap } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
-import { educationData } from "@/lib/translations";
-import SectionHeader from "./SectionHeader";
+import { getPortfolioContent } from "@/lib/portfolioContent";
+
+const BANGERS = "var(--font-bangers), sans-serif";
+const MONT = "var(--font-montserrat), sans-serif";
 
 export default function EducationSection() {
-    const { locale, t } = useLanguage();
-    const data = educationData[locale];
+    const { locale } = useLanguage();
+    const c = getPortfolioContent(locale);
 
     return (
-        <section className="mb-20">
-            <SectionHeader title={t.educationTitle} icon={GraduationCap} color="bg-comic-primary" />
-
-            <div className="bg-white border-4 border-black comic-shadow flex flex-col md:flex-row">
-                {/* Degree icon panel */}
-                <div className="md:w-1/4 bg-comic-primary border-b-4 md:border-b-0 md:border-r-4 border-black flex items-center justify-center p-8">
-                    <div className="bg-black border-2 border-comic-secondary text-comic-secondary p-4 shadow-[3px_3px_0_0_rgba(250,204,21,1)] transform -rotate-3">
-                        <GraduationCap size={48} />
-                    </div>
-                </div>
-
-                {/* Details */}
-                <div className="md:w-3/4 p-6">
-                    <h3 className="font-comic-header text-2xl md:text-3xl text-comic-primary leading-tight mb-3">
-                        {data.degree}
-                    </h3>
-                    <p className="font-bold text-lg flex items-center gap-2 mb-2">
-                        <Building2 size={20} className="text-comic-secondary shrink-0" />
-                        {data.school}
-                    </p>
-                    <p className="text-gray-700 flex items-start gap-2 mb-4">
-                        <BookOpen size={20} className="text-comic-secondary shrink-0 mt-0.5" />
-                        {data.program}
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                        <span className="bg-comic-primary text-white border-2 border-black px-3 py-1 text-sm font-bold">
-                            {data.period}
-                        </span>
-                        <span className="bg-gray-100 border-2 border-black px-3 py-1 text-sm font-bold">
-                            {data.classification}
-                        </span>
-                    </div>
-                </div>
+        <div style={{ padding: "56px 48px", borderTop: "4px solid #000" }}>
+            <h2
+                style={{
+                    font: `400 42px/1 ${BANGERS}`,
+                    color: "#1a1a1a",
+                    margin: "0 0 20px",
+                    letterSpacing: "2px",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 14,
+                }}
+            >
+                <GraduationCap size={40} color="#e63946" className="animate-[float_4s_ease-in-out_infinite]" strokeWidth={2.5} />
+                {c.sectEdu}
+            </h2>
+            <div
+                className="lift-hover"
+                style={{ padding: "24px 28px", background: "#fff", border: "2px solid #000", boxShadow: "4px 4px 0 #000" }}
+            >
+                <h3 style={{ font: `700 21px/1.3 ${MONT}`, color: "#1a1a1a", margin: "0 0 6px" }}>{c.eduProgram}</h3>
+                <p style={{ font: `400 18px/1.4 ${MONT}`, color: "#444", margin: "0 0 6px", textAlign: "justify" }}>{c.eduDegree}</p>
+                <p style={{ font: `italic 400 16px/1.4 ${MONT}`, color: "#999", margin: 0 }}>{c.eduYear}</p>
             </div>
-        </section>
+        </div>
     );
 }

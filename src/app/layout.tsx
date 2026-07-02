@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Bangers, Nunito } from "next/font/google";
+import { Bangers, Montserrat } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/context/LanguageContext";
 
@@ -11,11 +11,11 @@ const bangers = Bangers({
   display: "swap",
 });
 
-// Body Font - Nunito (tròn trịa, thân thiện, giữ nét comic nhưng dễ đọc hơn)
-const nunito = Nunito({
+// Body Font - Montserrat (dễ đọc, hiện đại; hỗ trợ tiếng Việt)
+const montserrat = Montserrat({
   weight: ["400", "500", "600", "700", "800"],
-  subsets: ["latin", "vietnamese"],
-  variable: "--font-nunito",
+  subsets: ["latin", "latin-ext", "vietnamese"],
+  variable: "--font-montserrat",
   display: "swap",
 });
 
@@ -52,7 +52,7 @@ export default function RootLayout({
   return (
     <html lang="vi" suppressHydrationWarning>
       <body
-        className={`${bangers.variable} ${nunito.variable} antialiased font-body`}
+        className={`${bangers.variable} ${montserrat.variable} antialiased font-body`}
         suppressHydrationWarning
       >
         <LanguageProvider>

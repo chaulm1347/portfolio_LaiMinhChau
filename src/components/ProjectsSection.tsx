@@ -1,95 +1,165 @@
 "use client";
 
-import { Code, Zap, Trophy } from "lucide-react";
-import { heroData } from "@/lib/data";
+import { Gamepad2 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
-import { projectTranslations } from "@/lib/translations";
-import SectionHeader from "./SectionHeader";
+import { getPortfolioContent } from "@/lib/portfolioContent";
+import ImageSlot from "./ImageSlot";
+
+const BANGERS = "var(--font-bangers), sans-serif";
+const MONT = "var(--font-montserrat), sans-serif";
 
 export default function ProjectsSection() {
-    const { locale, t } = useLanguage();
-    const projTranslations = projectTranslations[locale];
+    const { locale } = useLanguage();
+    const c = getPortfolioContent(locale);
 
     return (
-        <section className="mb-20">
-            <SectionHeader title={t.sideQuests} icon={Code} color="bg-comic-primary" />
+        <div style={{ padding: "36px 48px" }}>
+            <h2
+                style={{
+                    font: `400 42px/1 ${BANGERS}`,
+                    color: "#e63946",
+                    margin: "0 0 26px",
+                    letterSpacing: "2px",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 14,
+                }}
+            >
+                <Gamepad2 size={40} className="animate-[wiggle_3s_ease-in-out_infinite]" strokeWidth={2.5} />★ {c.sectQuest}
+            </h2>
 
-            <div className="grid grid-cols-1 gap-8">
-                {heroData.projects.map((proj, i) => {
-                    const projTranslation = projTranslations[i];
+            <div className="lift-hover" style={{ border: "3px solid #000", boxShadow: "8px 8px 0 #fca311", overflow: "hidden" }}>
+                {/* TIER 1: Hook */}
+                <div style={{ padding: "30px 34px", background: "#faf5ee", borderBottom: "3px solid #000", position: "relative" }}>
+                    <div
+                        className="animate-pulse-glow-status"
+                        style={{
+                            position: "absolute",
+                            top: -2,
+                            right: 26,
+                            padding: "5px 20px",
+                            background: "#e63946",
+                            color: "#fff",
+                            font: `400 21px/1.3 ${BANGERS}`,
+                            letterSpacing: "1px",
+                            border: "2.5px solid #000",
+                            boxShadow: "2px 2px 0 #000",
+                        }}
+                    >
+                        {c.flagshipStatus}
+                    </div>
+                    <h3 style={{ font: `400 33px/1.2 ${BANGERS}`, color: "#1a1a1a", margin: "0 0 8px", letterSpacing: "1px" }}>
+                        {c.flagshipTitle}
+                    </h3>
+                    <p style={{ font: `italic 500 19px/1.5 ${MONT}`, color: "#666", margin: 0 }}>{c.flagshipHook}</p>
+                </div>
 
-                    return (
-                        <div
-                            key={i}
-                            className="bg-white border-4 border-black comic-shadow flex flex-col group"
-                        >
-                            {/* Header Banner */}
-                            <div className="bg-comic-primary border-b-4 border-black text-white p-2 px-4 font-comic-header text-xl uppercase tracking-wider flex items-center justify-between gap-2">
-                                <span>
-                                    <span className="text-comic-secondary">{t.battleLog}</span> #{String(i + 1).padStart(2, "0")}
-                                </span>
-                                <span className="bg-comic-secondary text-black border-2 border-black px-2 py-0.5 text-xs font-bold tracking-normal animate-pulse">
-                                    {t.ongoing}
-                                </span>
-                            </div>
+                {/* TIER 2: Process Evidence */}
+                <div style={{ padding: "28px 34px", background: "#fff", borderBottom: "3px solid #000" }}>
+                    <div style={{ font: `400 21px/1.2 ${BANGERS}`, color: "#e63946", letterSpacing: "1px", marginBottom: 20 }}>
+                        {c.processTitle}
+                    </div>
 
-                            {/* Content */}
-                            <div className="p-6 flex-grow">
-                                <h3 className="text-2xl md:text-3xl font-bold mb-3">{proj.title}</h3>
-                                <div className="mb-4">
-                                    <span className="bg-comic-primary text-white border-2 border-black px-2 py-0.5 text-xs font-bold mr-2 uppercase">
-                                        {proj.role}
-                                    </span>
-                                </div>
-
-                                <p className="mb-5 text-gray-700 leading-relaxed">{projTranslation.desc}</p>
-
-                                {/* Detailed highlights */}
-                                <ul className="space-y-2.5 mb-5">
-                                    {projTranslation.highlights.map((point, j) => (
-                                        <li key={j} className="flex items-start gap-2 text-sm md:text-base leading-relaxed">
-                                            <span className="text-comic-secondary mt-1 shrink-0">★</span>
-                                            <span>{point}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-
-                                {/* Tools & Methods */}
-                                <div className="bg-gray-50 p-3 border-2 border-black border-dashed mb-4">
-                                    <p className="text-sm font-bold flex items-start gap-2 text-gray-800">
-                                        <Zap size={16} className="mt-1 text-comic-secondary bg-black p-0.5 rounded-sm flex-shrink-0 shadow-[1px_1px_0_0_rgba(250,204,21,1)]" />
-                                        <span>{t.toolsLabel}: {proj.tech}</span>
-                                    </p>
-                                </div>
-
-                                {/* Outcome callout */}
-                                <div className="bg-comic-primary text-white border-4 border-black p-4 flex items-start gap-3">
-                                    <div className="bg-black border-2 border-comic-secondary text-comic-secondary p-1.5 shadow-[2px_2px_0_0_rgba(250,204,21,1)] shrink-0">
-                                        <Trophy size={20} />
-                                    </div>
-                                    <div>
-                                        <span className="font-comic-header text-comic-secondary text-lg leading-none">{t.outcomeLabel}</span>
-                                        <p className="text-sm md:text-base leading-relaxed mt-1">{projTranslation.feat}</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Link Button */}
-                            {proj.link && (
-                                <a
-                                    href={`https://${proj.link}`}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="block bg-black text-white font-bold text-center py-3 border-t-4 border-black hover:text-comic-secondary transition-colors uppercase tracking-widest relative overflow-hidden group"
+                    {/* Sprint Timeline */}
+                    <div style={{ display: "flex", alignItems: "center", gap: 0, marginBottom: 22, overflowX: "auto" }}>
+                        {c.sprintTimeline.map((step, i) => (
+                            <div key={i} style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
+                                <div
+                                    style={{
+                                        padding: "7px 14px",
+                                        background: step.bg,
+                                        border: "2px solid #000",
+                                        boxShadow: "2px 2px 0 #000",
+                                        font: `600 13px/1.2 ${MONT}`,
+                                        color: step.color,
+                                        whiteSpace: "nowrap",
+                                    }}
                                 >
-                                    <span className="relative z-10">{t.viewDemo}</span>
-                                    <div className="absolute inset-0 bg-comic-secondary translate-y-full group-hover:translate-y-[90%] transition-transform duration-300"></div>
-                                </a>
-                            )}
-                        </div>
-                    );
-                })}
+                                    {step.label}
+                                </div>
+                                {step.arrow && (
+                                    <div style={{ font: `700 18px/1 ${MONT}`, color: "#ccc", padding: "0 6px" }}>→</div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* Process numbers */}
+                    <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+                        {c.processStats.map((ps, i) => (
+                            <div
+                                key={i}
+                                style={{
+                                    flex: 1,
+                                    minWidth: 110,
+                                    padding: 16,
+                                    background: "#fef2f2",
+                                    border: "2px solid #000",
+                                    textAlign: "center",
+                                    boxShadow: "2px 2px 0 #000",
+                                }}
+                            >
+                                <div style={{ font: `400 33px/1 ${BANGERS}`, color: "#e63946", marginBottom: 4 }}>{ps.value}</div>
+                                <div
+                                    style={{
+                                        font: `500 12px/1.3 ${MONT}`,
+                                        color: "#666",
+                                        textTransform: "uppercase",
+                                        letterSpacing: ".3px",
+                                    }}
+                                >
+                                    {ps.label}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* Document stack slot */}
+                    <div style={{ marginTop: 20, border: "2px dashed #ccc", borderRadius: 4, overflow: "hidden" }}>
+                        <ImageSlot slotId="flagship-docs" placeholder={c.docsPlaceholder} style={{ height: 170, background: "#fafafa", font: `500 14px/1.5 ${MONT}` }} />
+                    </div>
+                    <p style={{ font: `italic 400 13px/1.4 ${MONT}`, color: "#aaa", margin: "6px 0 0", textAlign: "center" }}>
+                        {c.docsCaption}
+                    </p>
+                </div>
+
+                {/* TIER 3: Teaser Visual */}
+                <div style={{ padding: "22px 34px", background: "#faf5ee", borderBottom: "3px solid #000" }}>
+                    <div style={{ border: "2px solid #000", boxShadow: "3px 3px 0 #000", overflow: "hidden", position: "relative" }}>
+                        <ImageSlot slotId="flagship-teaser" placeholder={c.teaserPlaceholder} style={{ height: 230, font: `500 14px/1.5 ${MONT}` }} />
+                        <div
+                            style={{
+                                position: "absolute",
+                                inset: 0,
+                                background: "linear-gradient(135deg,rgba(250,245,238,.3),rgba(250,245,238,.6))",
+                                pointerEvents: "none",
+                            }}
+                        />
+                    </div>
+                    <p style={{ font: `italic 500 14px/1.4 ${MONT}`, color: "#999", margin: "8px 0 0", textAlign: "center" }}>
+                        {c.teaserCaption}
+                    </p>
+                </div>
+
+                {/* TIER 4: Role Clarity */}
+                <div style={{ padding: "20px 34px", background: "#fff", display: "flex", gap: 10, flexWrap: "wrap", justifyContent: "center" }}>
+                    {c.roleTags.map((tag, i) => (
+                        <span
+                            key={i}
+                            style={{
+                                padding: "7px 16px",
+                                background: tag.bg,
+                                border: "2px solid #000",
+                                boxShadow: "2px 2px 0 #000",
+                                font: `500 15px/1.3 ${MONT}`,
+                                color: tag.color,
+                            }}
+                        >
+                            {tag.label}
+                        </span>
+                    ))}
+                </div>
             </div>
-        </section>
+        </div>
     );
 }

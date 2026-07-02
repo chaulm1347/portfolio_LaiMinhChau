@@ -7,6 +7,7 @@ export interface Translations {
     issueLabel: string;
     heroSignal: string;
     yearsExp: string;
+    tagline: string;
 
     // Section Headers
     superpowers: string;
@@ -17,9 +18,11 @@ export interface Translations {
 
     // Experience
     mission: string;
+    resultsLabel: string;
 
     // Projects
     battleLog: string;
+    flagship: string;
     viewDemo: string;
     toolsLabel: string;
     outcomeLabel: string;
@@ -44,6 +47,7 @@ export const translations: Record<Locale, Translations> = {
         issueLabel: "HỒ SƠ · 2026",
         heroSignal: "LIÊN HỆ",
         yearsExp: "4+ năm kinh nghiệm",
+        tagline: "Phát triển Sản phẩm · Điều phối Delivery · Quản lý Đa chức năng",
 
         // Section Headers
         superpowers: "Năng Lực Cốt Lõi",
@@ -53,10 +57,12 @@ export const translations: Record<Locale, Translations> = {
         educationTitle: "Học Vấn",
 
         // Experience
-        mission: "MỤC TIÊU",
+        mission: "BỐI CẢNH",
+        resultsLabel: "KẾT QUẢ ĐẠT ĐƯỢC",
 
         // Projects
         battleLog: "DỰ ÁN",
+        flagship: "DỰ ÁN NỔI BẬT",
         viewDemo: "Xem Demo",
         toolsLabel: "Công cụ & Phương pháp",
         outcomeLabel: "Kết quả",
@@ -81,6 +87,7 @@ export const translations: Record<Locale, Translations> = {
         issueLabel: "PROFILE · 2026",
         heroSignal: "CONTACT",
         yearsExp: "4+ years of experience",
+        tagline: "Product Development · Delivery Coordination · Cross-functional Management",
 
         // Section Headers
         superpowers: "Core Competencies",
@@ -90,10 +97,12 @@ export const translations: Record<Locale, Translations> = {
         educationTitle: "Education",
 
         // Experience
-        mission: "OBJECTIVE",
+        mission: "CONTEXT",
+        resultsLabel: "RESULTS DELIVERED",
 
         // Projects
         battleLog: "PROJECT",
+        flagship: "FLAGSHIP PROJECT",
         viewDemo: "View Demo",
         toolsLabel: "Tools & Methods",
         outcomeLabel: "Outcome",
@@ -126,82 +135,60 @@ export const experienceTranslations: Record<Locale, ExperienceTranslation[]> = {
     vi: [
         {
             comicTitle: "AI VOICE AGENT — POC DOANH NGHIỆP ĐẦU TIÊN",
-            mission:
-                "Điều phối toàn bộ delivery sản phẩm AI Voice Agent B2B tích hợp Call Center doanh nghiệp (LiveKit, FreeSWITCH/FusionPBX, MinIO). Đầu mối giữa CEO và nhóm kỹ thuật 4 người — từ PRD đến go-live.",
+            mission: "Điều phối delivery sản phẩm AI Voice Agent B2B — từ PRD đến go-live.",
             achievements: [
-                "Phân rã yêu cầu: Tiếp nhận PRD từ CEO, chuyển hóa mục tiêu sản phẩm cấp cao thành task thực thi, phân công cho BA, Dev, QA và duy trì bảng theo dõi task xuyên suốt delivery.",
-                "Quản lý tiến độ: Xây dựng và quản lý timeline từ kickoff đến go-live, theo dõi hàng ngày, phát hiện blocker sớm và leo thang rủi ro với CEO trong sprint 2 tháng.",
-                "Giao tiếp stakeholder: Đầu mối duy nhất giữa khách hàng doanh nghiệp và đội kỹ thuật — thu thập yêu cầu, chuyển hóa nhu cầu kinh doanh thành tóm tắt kỹ thuật và quản lý kỳ vọng.",
-                "Tổ chức UAT & triển khai: Điều phối các phiên UAT với đội vận hành khách hàng, theo dõi xử lý lỗi với dev và sắp xếp trình tự go-live để bàn giao ổn định.",
-                "Hoàn thành POC doanh nghiệp đầu tiên của sản phẩm từ đầu đến cuối — kết quả là hợp đồng được ký, trở thành nền tảng cho chiến lược go-to-market B2B.",
-                "AI Voice Agent đi vào hoạt động với ~80% độ phủ tính năng theo yêu cầu; duy trì quan hệ khách hàng tốt, không có lần leo thang khẩn cấp nào.",
+                "Hoàn thành POC doanh nghiệp đầu tiên end-to-end → hợp đồng được ký, trở thành nền tảng go-to-market B2B.",
+                "AI Voice Agent go-live với ~80% độ phủ tính năng theo yêu cầu khách hàng.",
+                "Không có lần leo thang khẩn cấp nào; quan hệ khách hàng được giữ vững suốt delivery.",
             ],
         },
         {
             comicTitle: "XÂY DỰNG HỆ SINH THÁI ĐỐI TÁC TỪ CON SỐ KHÔNG",
-            mission:
-                "Xây dựng và vận hành hệ sinh thái đối tác B2B của công ty từ đầu — onboarding, SOP hợp tác, theo dõi hiệu suất, kênh cộng đồng và phối hợp 5 bộ phận nội bộ.",
+            mission: "Xây dựng & vận hành hệ sinh thái đối tác B2B từ con số không.",
             achievements: [
-                "Thiết kế hệ sinh thái: Xây dựng toàn bộ hành trình đối tác — quy trình onboarding, SOP hợp tác, checklist khởi động và theo dõi KPI hàng tuần; điều phối qua 5 bộ phận nội bộ.",
-                "Kênh thu hút khách hàng: Đề xuất, lên kế hoạch và tổ chức chuỗi 6 webinar tạo pipeline có cấu trúc; trực tiếp làm MC dẫn chương trình.",
-                "Quản lý cộng đồng: Chuyển hóa học viên webinar thành cộng đồng Zalo 400+ người — điểm tương tác thường xuyên cho tin tức sản phẩm và kích hoạt đối tác.",
-                "Sáng kiến sản phẩm đa chức năng: Đề xuất và điều phối trang giới thiệu đối tác trên Matbao.net — phối hợp UX/UI và Frontend từ yêu cầu đến production.",
-                "Xây dựng và quản lý 25+ đối tác chủ động (SaaS, AI, ERP & MES, E-commerce…), đạt tỷ lệ hợp tác thành công ~80%.",
-                "Đóng góp vào mức tăng trưởng doanh thu sản phẩm 50% so với năm trước qua kênh đối tác; chuỗi webinar góp phần đưa Mat Bao được Google Fund ghi nhận.",
+                "Tăng trưởng doanh thu sản phẩm +50% so với năm trước qua kênh đối tác.",
+                "25+ đối tác chủ động, tỷ lệ hợp tác thành công ~80%.",
+                "Cộng đồng Zalo 400+ thành viên; chuỗi 6 webinar góp phần đưa Mat Bao được Google Fund ghi nhận.",
+                "Triển khai trang showcase đối tác trên Matbao.net (phối hợp UX/UI & Frontend).",
             ],
         },
         {
             comicTitle: "HẠ TẦNG VẬN HÀNH CHO STARTUP GIAI ĐOẠN ĐẦU",
-            mission:
-                "Xây dựng hạ tầng vận hành và triển khai dự án từ đầu cho một startup thúc đẩy thương mại Việt – Nhật và hợp tác giáo dục quốc tế.",
+            mission: "Xây dựng hạ tầng vận hành & delivery dự án từ đầu cho startup thương mại Việt – Nhật.",
             achievements: [
-                "Xây dựng hệ thống vận hành: Thiết kế hệ thống theo dõi dự án, SOP và quy trình đa bộ phận từ đầu; chuẩn hóa pipeline bán hàng và điều phối nội bộ.",
-                "Điều phối dự án quốc tế: Quản lý các dự án xúc tiến thương mại Việt – Nhật, theo dõi mốc tiến độ và đồng bộ delivery qua các đối tác KVK, Nakanihon, FUNiX, Rikkei.",
-                "Quản lý chuỗi cung ứng & nhà cung cấp, điều phối đội ngũ nội bộ trên nhiều dự án song song; duy trì báo cáo KPI và tiến độ hàng tuần.",
-                "Triển khai chương trình đào tạo cho 200+ sinh viên tại 3 trường đại học — điều phối hậu cần, lịch giảng viên và nội dung.",
-                "Cải thiện hiệu suất vận hành ~50% thông qua chuẩn hóa quy trình và SOP.",
-                "Quản lý các dự án thương mại và chuỗi cung ứng với doanh thu ~600 triệu VND.",
+                "Cải thiện hiệu suất vận hành ~50% nhờ chuẩn hóa quy trình & SOP.",
+                "Quản lý dự án thương mại và chuỗi cung ứng với doanh thu ~600 triệu VND.",
+                "Triển khai chương trình đào tạo cho 200+ sinh viên tại 3 trường đại học.",
             ],
         },
     ],
     en: [
         {
             comicTitle: "AI VOICE AGENT — FIRST ENTERPRISE POC",
-            mission:
-                "Coordinated the full delivery of a B2B AI Voice Agent integrated with an enterprise Call Center (LiveKit, FreeSWITCH/FusionPBX, MinIO). Single point of contact between the CEO and a 4-person engineering team — from PRD to go-live.",
+            mission: "Coordinated delivery of a B2B AI Voice Agent — from PRD to go-live.",
             achievements: [
-                "Requirements breakdown: Took the PRD from the CEO, translated high-level product goals into executable tasks, assigned them across BA, Dev and QA, and kept a live task tracker throughout delivery.",
-                "Timeline management: Built and ran the timeline from kickoff to go-live, tracked progress daily, surfaced blockers early and escalated dependency risks to the CEO within a 2-month sprint.",
-                "Stakeholder communication: Acted as the sole bridge between the enterprise client and engineering — gathering requirements, translating business needs into technical briefs and managing expectations.",
-                "UAT & rollout: Ran UAT sessions with the client's operations team, tracked bug resolution with dev and sequenced the go-live for a stable handover.",
-                "Delivered the product's first enterprise POC end-to-end — resulting in a signed contract that became the foundation of the B2B go-to-market strategy.",
-                "The AI Voice Agent went live with ~80% of requested feature coverage; client relationship stayed strong with zero emergency escalations.",
+                "Delivered the first enterprise POC end-to-end → signed contract that became the B2B go-to-market foundation.",
+                "AI Voice Agent went live with ~80% of requested feature coverage.",
+                "Zero emergency escalations; client relationship kept strong throughout delivery.",
             ],
         },
         {
             comicTitle: "BUILT A PARTNER ECOSYSTEM FROM ZERO",
-            mission:
-                "Built and ran the company's B2B partner ecosystem from scratch — onboarding, partnership SOPs, performance tracking, a community channel and coordination across 5 internal departments.",
+            mission: "Built & ran the company's B2B partner ecosystem from scratch.",
             achievements: [
-                "Ecosystem design: Built the entire partner journey — onboarding process, partnership SOPs, kickoff checklist and weekly KPI tracking; coordinated execution across 5 internal departments.",
-                "Acquisition channel: Proposed, planned and ran a series of 6 webinars to create a structured pipeline; hosted the series as MC.",
-                "Community management: Converted webinar attendees into a 400+ member Zalo community — a recurring touchpoint for product news and partner activation.",
-                "Cross-functional product initiative: Proposed and coordinated a partner showcase page on Matbao.net — working with UX/UI and Frontend from requirements to production.",
-                "Built and managed 25+ active partners (SaaS, AI, ERP & MES, E-commerce…) with a ~80% partnership success rate.",
-                "Contributed to 50% YoY product revenue growth through partner channels; the webinar series helped earn Mat Bao recognition from Google Fund.",
+                "+50% YoY product revenue growth through partner channels.",
+                "25+ active partners with a ~80% partnership success rate.",
+                "400+ member Zalo community; a 6-webinar series helped earn Mat Bao recognition from Google Fund.",
+                "Shipped a partner showcase page on Matbao.net (with UX/UI & Frontend).",
             ],
         },
         {
             comicTitle: "OPERATIONS FOUNDATION FOR AN EARLY-STAGE STARTUP",
-            mission:
-                "Built operations infrastructure and project delivery from scratch for a startup driving Vietnam–Japan trade and international education partnerships.",
+            mission: "Built operations & project delivery from scratch for a Vietnam–Japan trade startup.",
             achievements: [
-                "Operations system: Designed project tracking, SOPs and cross-department processes from scratch; standardized the sales pipeline and internal coordination.",
-                "International project delivery: Managed Vietnam–Japan trade promotion projects, tracked milestones and synced delivery across partners KVK, Nakanihon, FUNiX and Rikkei.",
-                "Managed supply chain and vendor relationships, coordinated internal teams across parallel projects; maintained weekly KPI and progress reports.",
-                "Delivered training programs for 200+ students across 3 universities — coordinating logistics, instructor schedules and content.",
-                "Improved operational efficiency by ~50% through process standardization and SOP rollout.",
-                "Managed trade and supply-chain projects with ~600 million VND in revenue.",
+                "~50% improvement in operational efficiency via process standardization & SOPs.",
+                "Managed trade and supply-chain projects with ~600M VND in revenue.",
+                "Delivered training programs for 200+ students across 3 universities.",
             ],
         },
     ],

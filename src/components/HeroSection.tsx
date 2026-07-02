@@ -1,86 +1,199 @@
 "use client";
 
-import { Shield, Phone, Mail, MapPin, Clock, Zap } from "lucide-react";
-import { heroData } from "@/lib/data";
+import { Sparkles, Rocket } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { getPortfolioContent } from "@/lib/portfolioContent";
+import ImageSlot from "./ImageSlot";
+
+const BANGERS = "var(--font-bangers), sans-serif";
+const MONT = "var(--font-montserrat), sans-serif";
 
 export default function HeroSection() {
-    const { t } = useLanguage();
+    const { locale } = useLanguage();
+    const c = getPortfolioContent(locale);
 
     return (
-        <header className="pt-10 mb-16">
-            {/* Title Box (Starbucks Green) - Name/Title */}
-            <div className="bg-comic-primary border-4 border-black p-8 md:p-12 comic-shadow relative overflow-hidden mb-8">
-                {/* Decorative Background Pattern */}
-                <div className="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:20px_20px]"></div>
-                <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full mix-blend-overlay filter blur-xl opacity-70 animate-pulse"></div>
+        <div style={{ padding: "0 48px" }}>
+            {/* ══ COVER ══ */}
+            <div
+                style={{
+                    marginTop: 40,
+                    background: "#e63946",
+                    position: "relative",
+                    overflow: "hidden",
+                    border: "4px solid #1a1a1a",
+                    boxShadow: "10px 10px 0 rgba(0,0,0,.12)",
+                }}
+            >
+                {/* halftone dot texture */}
+                <div
+                    style={{
+                        position: "absolute",
+                        inset: 0,
+                        backgroundImage: "radial-gradient(circle,rgba(0,0,0,.05) 1px,transparent 1px)",
+                        backgroundSize: "8px 8px",
+                        pointerEvents: "none",
+                    }}
+                />
+                {/* speed lines */}
+                <svg
+                    style={{ position: "absolute", top: 0, right: 0, width: 380, height: "100%", opacity: 0.07 }}
+                    viewBox="0 0 280 300"
+                    preserveAspectRatio="none"
+                >
+                    <line x1="280" y1="0" x2="0" y2="140" stroke="#000" strokeWidth="3" />
+                    <line x1="280" y1="30" x2="0" y2="170" stroke="#000" strokeWidth="2" />
+                    <line x1="280" y1="60" x2="0" y2="200" stroke="#000" strokeWidth="4" />
+                    <line x1="280" y1="100" x2="0" y2="240" stroke="#000" strokeWidth="2" />
+                    <line x1="280" y1="150" x2="20" y2="290" stroke="#000" strokeWidth="3" />
+                    <line x1="280" y1="200" x2="60" y2="300" stroke="#000" strokeWidth="2" />
+                    <line x1="280" y1="250" x2="120" y2="300" stroke="#000" strokeWidth="3" />
+                </svg>
 
-                <div className="relative z-10 text-center md:text-left">
-                    {/* Issue Badge (Highlight element) */}
-                    <div className="flex items-center gap-2 mb-4 justify-center md:justify-start">
-                        <div className="bg-black text-white px-3 py-1 font-comic-header text-lg transform -rotate-2 border-2 border-black">
-                            {t.issueLabel}
+                {/* decorative floating icon */}
+                <div
+                    style={{ position: "absolute", top: 24, right: 28, color: "rgba(255,255,255,.5)", zIndex: 1 }}
+                    className="animate-[wiggle_3s_ease-in-out_infinite]"
+                >
+                    <Sparkles size={40} strokeWidth={2.5} />
+                </div>
+
+                <div
+                    style={{
+                        position: "relative",
+                        padding: "60px 56px 52px",
+                        display: "flex",
+                        gap: 44,
+                        alignItems: "center",
+                        flexWrap: "wrap",
+                    }}
+                >
+                    <div style={{ flexShrink: 0, position: "relative" }}>
+                        <div
+                            style={{
+                                width: 200,
+                                height: 244,
+                                border: "4px solid #000",
+                                boxShadow: "8px 8px 0 #000",
+                                overflow: "hidden",
+                                background: "#fef3e2",
+                            }}
+                        >
+                            <ImageSlot slotId="avatar" placeholder={c.avatarPlaceholder} style={{ font: `500 15px/1.5 ${MONT}` }} />
                         </div>
-                        <Zap size={20} className="text-comic-secondary animate-pulse" fill="currentColor" />
+                        <div
+                            className="animate-[float_4s_ease-in-out_infinite]"
+                            style={{
+                                position: "absolute",
+                                bottom: -14,
+                                left: "50%",
+                                transform: "translateX(-50%)",
+                                padding: "5px 18px",
+                                background: "#fca311",
+                                border: "3px solid #000",
+                                font: `400 15px/1.3 ${BANGERS}`,
+                                color: "#000",
+                                letterSpacing: "1.5px",
+                                whiteSpace: "nowrap",
+                            }}
+                        >
+                            Open To Work
+                        </div>
                     </div>
 
-                    {/* Hero Name - White text with black outline effect */}
-                    <h1 className="text-6xl md:text-8xl font-comic-header uppercase leading-none mb-6 text-white drop-shadow-[6px_6px_0_rgba(0,0,0,1)]">
-                        {heroData.name}
-                    </h1>
-
-                    {/* Redesigned a.k.a Badge - Unified White Block with Yellow Highlight */}
-                    <div className="inline-flex items-center bg-white border-4 border-black px-4 py-1.5 md:py-2 comic-shadow transform rotate-1">
-                        {/* Highlights as an internal element */}
-                        <span className="bg-comic-secondary text-black px-2 py-0.5 font-comic-header text-lg md:text-xl mr-3 border-2 border-black shadow-[2px_2px_0_0_black]">
-                            A.K.A
-                        </span>
-                        <span className="text-black font-bold text-xl md:text-2xl uppercase tracking-wider">
-                            {heroData.title}
-                        </span>
+                    <div style={{ flex: 1, minWidth: 280 }}>
+                        <div
+                            style={{
+                                display: "inline-block",
+                                padding: "8px 24px",
+                                background: "#fca311",
+                                border: "3px solid #000",
+                                font: `400 21px/1.3 ${BANGERS}`,
+                                color: "#000",
+                                letterSpacing: "2px",
+                                transform: "rotate(-2deg)",
+                                marginBottom: 16,
+                            }}
+                        >
+                            PORTFOLIO
+                        </div>
+                        <h1
+                            style={{
+                                font: `400 72px/1 ${BANGERS}`,
+                                color: "#fff",
+                                margin: "0 0 10px",
+                                letterSpacing: "4px",
+                                textShadow: "4px 4px 0 #000",
+                            }}
+                        >
+                            {c.name}
+                        </h1>
+                        <p style={{ font: `600 18px/1.4 ${MONT}`, color: "rgba(255,255,255,.85)", margin: "0 0 16px" }}>
+                            {c.tagline}
+                        </p>
+                        <div
+                            style={{
+                                display: "flex",
+                                flexWrap: "wrap",
+                                gap: 18,
+                                font: `500 15px/1.3 ${MONT}`,
+                                color: "rgba(255,255,255,.7)",
+                            }}
+                        >
+                            <span>✉ {c.email}</span>
+                            <span>☎ {c.phone}</span>
+                            <span>◎ {c.location}</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            {/* Info & Summary Section (Grid) */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
-                {/* Contact Card */}
-                <div className="md:col-span-1 bg-white border-4 border-black p-5 comic-shadow transform -rotate-1">
-                    <h3 className="font-comic-header text-2xl border-b-4 border-black pb-2 mb-3 flex items-center gap-2">
-                        <Shield size={24} className="text-comic-secondary" fill="currentColor" fillOpacity={0.2} /> {t.heroSignal}
-                    </h3>
-                    <div className="space-y-3 text-lg">
-                        <p className="font-bold flex items-center gap-3">
-                            <Phone size={20} className="text-comic-secondary flex-shrink-0" />
-                            {heroData.contact.phone}
+            {/* ══ SPEECH BUBBLE ══ */}
+            <div style={{ padding: "36px 0 24px" }}>
+                <div
+                    style={{
+                        padding: "28px 34px",
+                        background: "#fff",
+                        border: "3px solid #000",
+                        boxShadow: "5px 5px 0 #000",
+                        position: "relative",
+                    }}
+                >
+                    <div
+                        style={{
+                            position: "absolute",
+                            top: -18,
+                            left: 80,
+                            width: 0,
+                            height: 0,
+                            borderStyle: "solid",
+                            borderWidth: "0 16px 18px 16px",
+                            borderColor: "transparent transparent #000 transparent",
+                        }}
+                    />
+                    <div
+                        style={{
+                            position: "absolute",
+                            top: -12,
+                            left: 84,
+                            width: 0,
+                            height: 0,
+                            borderStyle: "solid",
+                            borderWidth: "0 12px 13px 12px",
+                            borderColor: "transparent transparent #fff transparent",
+                        }}
+                    />
+                    <p style={{ font: `italic 500 20px/1.7 ${MONT}`, color: "#e63946", margin: "0 0 14px", display: "flex", alignItems: "center", gap: 10 }}>
+                        <Rocket size={22} className="animate-[float_4s_ease-in-out_infinite]" style={{ flexShrink: 0 }} />
+                        {c.signature}
+                    </p>
+                    {c.summaryParts.map((part, i) => (
+                        <p key={i} style={{ font: `400 17px/1.75 ${MONT}`, color: "#444", margin: "0 0 12px", textAlign: "justify" }}>
+                            {part}
                         </p>
-                        <p className="font-bold flex items-center gap-3 break-all">
-                            <Mail size={20} className="text-comic-secondary flex-shrink-0" />
-                            {heroData.contact.email}
-                        </p>
-                        <p className="font-bold flex items-center gap-3">
-                            <MapPin size={20} className="text-comic-secondary flex-shrink-0" />
-                            {heroData.contact.location}
-                        </p>
-                        <p className="font-bold flex items-center gap-3">
-                            <Clock size={20} className="text-comic-secondary flex-shrink-0" />
-                            {t.yearsExp}
-                        </p>
-                    </div>
-                </div>
-
-                {/* Summary Speech Bubble */}
-                <div className="md:col-span-2 relative mt-4 md:mt-0">
-                    <div className="hidden md:block absolute -top-4 left-10 w-0 h-0 border-l-[20px] border-l-transparent border-r-[20px] border-r-transparent border-b-[20px] border-b-black"></div>
-                    <div className="hidden md:block absolute -top-[13px] left-[42px] w-0 h-0 border-l-[18px] border-l-transparent border-r-[18px] border-r-transparent border-b-[18px] border-b-white z-10"></div>
-
-                    <div className="bg-white border-4 border-black p-6 rounded-[2rem] rounded-tl-none md:rounded-tl-[2rem] comic-shadow relative z-0">
-                        <p className="text-lg leading-relaxed font-semibold italic">
-                            &ldquo;{t.summary}&rdquo;
-                        </p>
-                    </div>
+                    ))}
                 </div>
             </div>
-        </header>
+        </div>
     );
 }

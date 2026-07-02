@@ -5,11 +5,11 @@
   --background: #f0f0f0;
   --foreground: #171717;
 
-  /* Mixed Comic Palette: Starbucks Green & Yellow Accent */
-  --comic-primary: #006241;
-  /* Starbucks Green */
-  --comic-secondary: #facc15;
-  /* Yellow - Highlights for small elements only */
+  /* Comic Palette: Comic Red primary & warm Amber accent (khớp bản thiết kế HTML) */
+  --comic-primary: #e63946;
+  /* Comic Red - warm, friendly, bold */
+  --comic-secondary: #fca311;
+  /* Amber - warm highlight for small elements only */
   --comic-dark: #000000;
   /* Black - Text, borders */
   --comic-light: #ffffff;
@@ -28,7 +28,7 @@
 
   /* Custom fonts */
   --font-comic-header: var(--font-bangers), cursive;
-  --font-body: var(--font-nunito), system-ui, sans-serif;
+  --font-body: var(--font-montserrat), system-ui, sans-serif;
 
   /* Simplified Comic colors defined in :root */
   --color-comic-primary: var(--comic-primary);
@@ -83,7 +83,7 @@ body {
 }
 
 .font-body {
-  font-family: var(--font-nunito), system-ui, sans-serif;
+  font-family: var(--font-montserrat), system-ui, sans-serif;
 }
 
 /* ===== Animation Keyframes ===== */
@@ -101,6 +101,51 @@ body {
 
 .animate-pulse-glow {
   animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* pulseGlow từ bản thiết kế HTML gốc (dùng cho badge trạng thái flagship) */
+@keyframes pulseGlow {
+
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-pulse-glow-status {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+/* Hover lift dùng cho nút toggle ngôn ngữ & nút CTA (port từ style-hover trong HTML) */
+.hover-lift-2 {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.hover-lift-2:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 #000;
+}
+
+.hover-lift-1 {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.hover-lift-1:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 #000;
+}
+
+/* Nhấc nhẹ card khi hover mà vẫn giữ nguyên màu bóng inline của từng khung */
+.lift-hover {
+  transition: transform 0.18s ease;
+}
+
+.lift-hover:hover {
+  transform: translate(-3px, -3px);
 }
 
 /* Float animation - gentle up and down movement */
@@ -155,7 +200,7 @@ body {
 
 /* ===== Selection Styling ===== */
 ::selection {
-  background-color: #facc15;
+  background-color: var(--comic-secondary);
   color: black;
 }
 
@@ -170,10 +215,10 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #facc15;
+  background: var(--comic-secondary);
   border: 3px solid black;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #eab308;
+  background: #f59e0b;
 }

@@ -39,7 +39,7 @@ When editing content, change the data files — not JSX. To add a UI string, add
 
 The visual identity ("comic"/superhero panel style) lives in `src/app/globals.css` via CSS variables and utility classes, surfaced to Tailwind v4 through `@theme inline`:
 
-- Colors: `comic-primary` (#006241 green), `comic-secondary` (#facc15 yellow accent), used as Tailwind classes like `bg-comic-primary`, `text-comic-secondary`.
+- Colors: `comic-primary` (#ea580c sunset coral), `comic-secondary` (#fbbf24 amber accent), defined as CSS variables in `globals.css` and used as Tailwind classes like `bg-comic-primary`, `text-comic-secondary`. To re-theme, change the two variables; hardcoded accent shadows reference `var(--comic-secondary)` so they track automatically.
 - Effects: `.comic-shadow` / `.comic-shadow-sm` (hard offset drop shadows), thick `border-4 border-black`.
 - Fonts: `font-comic-header` (Bangers, headers) and `font-body` (Nunito), wired in `layout.tsx` via `next/font`.
 - Keyframe animations `float` / `wiggle` / `shake` are referenced inline with Tailwind arbitrary values, e.g. `animate-[float_4s_ease-in-out_infinite]`.
