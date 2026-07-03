@@ -13,7 +13,7 @@ export default function HeroSection() {
     const c = getPortfolioContent(locale);
 
     return (
-        <div style={{ padding: "0 48px" }}>
+        <div className="rsec" style={{ padding: "0 48px" }}>
             {/* ══ COVER ══ */}
             <div
                 style={{
@@ -59,6 +59,7 @@ export default function HeroSection() {
                 </div>
 
                 <div
+                    className="rcover"
                     style={{
                         position: "relative",
                         padding: "60px 56px 52px",

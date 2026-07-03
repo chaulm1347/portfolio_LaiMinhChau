@@ -20,7 +20,7 @@ export default function ExperienceTimeline() {
     const c = getPortfolioContent(locale);
 
     return (
-        <div style={{ padding: "36px 48px" }}>
+        <div className="rsec" style={{ padding: "36px 48px" }}>
             <h2
                 style={{
                     font: `400 42px/1 ${BANGERS}`,

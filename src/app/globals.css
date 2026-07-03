@@ -198,6 +198,41 @@ body {
   }
 }
 
+/* ===== Responsive cho mobile ===== */
+@media (max-width: 680px) {
+  /* Giảm padding ngang của mọi section */
+  .rsec {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* Co tiêu đề lớn cho vừa màn hình hẹp */
+  .rsec h1 {
+    font-size: clamp(38px, 12vw, 72px) !important;
+    letter-spacing: 2px !important;
+  }
+
+  .rsec h2 {
+    font-size: clamp(26px, 7.5vw, 54px) !important;
+  }
+
+  /* Ảnh bìa (cover) & CTA giảm padding */
+  .rcover {
+    padding: 26px 18px 24px !important;
+  }
+
+  /* Gallery: 5 cột -> 2 cột cho dễ nhìn trên mobile */
+  .rgallery {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .rgallery {
+    grid-template-columns: 1fr !important;
+  }
+}
+
 /* ===== Selection Styling ===== */
 ::selection {
   background-color: var(--comic-secondary);

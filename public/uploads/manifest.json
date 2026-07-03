@@ -43,8 +43,8 @@
   },
   "flagship-docs": {
     "url": "/uploads/flagship-docs.jpg",
-    "scale": 1.8,
-    "tx": 0.5310996100872083,
-    "ty": -33.886334973232145
+    "scale": 1,
+    "tx": 0,
+    "ty": 0
   }
 }

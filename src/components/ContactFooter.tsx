@@ -13,6 +13,7 @@ export default function ContactFooter() {
 
     return (
         <div
+            className="rsec"
             style={{
                 marginTop: 36,
                 padding: "60px 48px",

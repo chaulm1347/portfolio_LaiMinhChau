@@ -9,15 +9,18 @@ interface ImageSlotProps {
     style?: React.CSSProperties;
     /** Style áp riêng cho thẻ <img> (vd: filter blur cho ảnh teaser). */
     imgStyle?: React.CSSProperties;
+    /** Khung tự lấy đúng tỷ lệ ảnh gốc -> ảnh luôn lấp đầy khung, cố định, không lệch khi resize. */
+    autoAspect?: boolean;
 }
 
 interface SlotState {
     editable: boolean;
     imgSrc: string | null;
     scale: number;
-    tx: number; // dịch ngang (% khung) — di chuyển ảnh trong khung
+    tx: number; // dịch ngang (% khung)
     ty: number; // dịch dọc (% khung)
     busy: boolean;
+    natAspect: number | null; // tỷ lệ (rộng/cao) thật của ảnh, đọc khi load
 }
 
 function isLocalhost(): boolean {
@@ -36,8 +39,9 @@ const OFFSET_LIMIT = 200; // % giới hạn dịch chuyển
  *   nên MỌI khách truy cập đều thấy đúng khung đã căn.
  * - Ở localhost (admin): click chọn ảnh, KÉO để di chuyển tự do, nút +/− phóng to/thu nhỏ,
  *   ⟲ đặt lại. Mọi thay đổi tự lưu lên server.
+ * - autoAspect: khung tự khớp tỷ lệ ảnh gốc -> lấp đầy hoàn hảo, cố định, ổn định khi resize.
  */
-export default function ImageSlot({ placeholder, slotId, style, imgStyle }: ImageSlotProps) {
+export default function ImageSlot({ placeholder, slotId, style, imgStyle, autoAspect }: ImageSlotProps) {
     const [state, setState] = useState<SlotState>({
         editable: false,
         imgSrc: null,
@@ -45,8 +49,9 @@ export default function ImageSlot({ placeholder, slotId, style, imgStyle }: Imag
         tx: 0,
         ty: 0,
         busy: false,
+        natAspect: null,
     });
-    const { editable, imgSrc, scale, tx, ty, busy } = state;
+    const { editable, imgSrc, scale, tx, ty, busy, natAspect } = state;
 
     const inputRef = useRef<HTMLInputElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
@@ -91,6 +96,7 @@ export default function ImageSlot({ placeholder, slotId, style, imgStyle }: Imag
                     tx: entry?.tx ?? 0,
                     ty: entry?.ty ?? 0,
                     busy: false,
+                    natAspect: null,
                 });
         })();
         return () => {
@@ -133,7 +139,7 @@ export default function ImageSlot({ placeholder, slotId, style, imgStyle }: Imag
                 const res = await fetch("/api/upload", { method: "POST", body: fd });
                 const data = await res.json();
                 if (res.ok && data.url) {
-                    setState((s) => ({ ...s, imgSrc: `${data.url}?t=${Date.now()}`, scale: 1, tx: 0, ty: 0, busy: false }));
+                    setState((s) => ({ ...s, imgSrc: `${data.url}?t=${Date.now()}`, scale: 1, tx: 0, ty: 0, busy: false, natAspect: null }));
                 } else {
                     setState((s) => ({ ...s, busy: false }));
                     alert(data.error || "Tải ảnh lên thất bại.");
@@ -150,7 +156,7 @@ export default function ImageSlot({ placeholder, slotId, style, imgStyle }: Imag
         async (e: React.MouseEvent) => {
             e.stopPropagation();
             if (!slotId) return;
-            setState((s) => ({ ...s, imgSrc: null, scale: 1, tx: 0, ty: 0 }));
+            setState((s) => ({ ...s, imgSrc: null, scale: 1, tx: 0, ty: 0, natAspect: null }));
             try {
                 await fetch(`/api/upload?slotId=${encodeURIComponent(slotId)}`, { method: "DELETE" });
             } catch {
@@ -176,6 +182,18 @@ export default function ImageSlot({ placeholder, slotId, style, imgStyle }: Imag
             scheduleSave();
         },
         [scheduleSave],
+    );
+
+    const onImgLoad = useCallback(
+        (e: React.SyntheticEvent<HTMLImageElement>) => {
+            if (!autoAspect) return;
+            const el = e.currentTarget;
+            if (el.naturalWidth && el.naturalHeight) {
+                const a = el.naturalWidth / el.naturalHeight;
+                setState((s) => (s.natAspect === a ? s : { ...s, natAspect: a }));
+            }
+        },
+        [autoAspect],
     );
 
     // ── Kéo để di chuyển ảnh tự do trong khung ──
@@ -206,6 +224,10 @@ export default function ImageSlot({ placeholder, slotId, style, imgStyle }: Imag
     }, [scheduleSave]);
 
     const showControls = editable && imgSrc && !busy;
+    // Khi autoAspect + đã biết tỷ lệ ảnh -> khung khớp ảnh, ảnh lấp đầy hoàn hảo (cover), không lệch.
+    const useAuto = !!autoAspect && natAspect != null;
+    // Chỉ cho zoom/kéo khi KHÔNG dùng autoAspect (autoAspect đã tự khít, không cần chỉnh).
+    const canAdjust = !!showControls && !useAuto;
 
     const ctrlBtn: React.CSSProperties = {
         width: 24,
@@ -226,11 +248,11 @@ export default function ImageSlot({ placeholder, slotId, style, imgStyle }: Imag
         <div
             ref={containerRef}
             onClick={imgSrc ? undefined : openPicker}
-            onPointerDown={showControls ? onPointerDown : undefined}
-            onPointerMove={showControls ? onPointerMove : undefined}
-            onPointerUp={showControls ? onPointerUp : undefined}
+            onPointerDown={canAdjust ? onPointerDown : undefined}
+            onPointerMove={canAdjust ? onPointerMove : undefined}
+            onPointerUp={canAdjust ? onPointerUp : undefined}
             role={editable && !imgSrc ? "button" : undefined}
-            title={editable ? (imgSrc ? "Kéo để di chuyển ảnh" : "Nhấn để chọn ảnh từ máy") : undefined}
+            title={editable ? (imgSrc ? (canAdjust ? "Kéo để di chuyển ảnh" : undefined) : "Nhấn để chọn ảnh từ máy") : undefined}
             style={{
                 position: "relative",
                 width: "100%",
@@ -243,10 +265,11 @@ export default function ImageSlot({ placeholder, slotId, style, imgStyle }: Imag
                 background: "#fef3e2",
                 color: "#b3a695",
                 font: "500 10px/1.5 var(--font-montserrat), sans-serif",
-                cursor: editable ? (imgSrc ? "grab" : busy ? "default" : "pointer") : "default",
+                cursor: editable ? (imgSrc ? (canAdjust ? "grab" : "default") : busy ? "default" : "pointer") : "default",
                 overflow: "hidden",
-                touchAction: showControls ? "none" : undefined,
+                touchAction: canAdjust ? "none" : undefined,
                 ...style,
+                ...(useAuto ? { aspectRatio: String(natAspect), height: "auto" } : {}),
             }}
         >
             {imgSrc ? (
@@ -255,15 +278,17 @@ export default function ImageSlot({ placeholder, slotId, style, imgStyle }: Imag
                     src={imgSrc}
                     alt={placeholder}
                     draggable={false}
+                    onLoad={onImgLoad}
                     style={{
                         position: "absolute",
                         inset: 0,
                         width: "100%",
                         height: "100%",
-                        // contain: hiển thị TRỌN VẸN ảnh gốc trong khung (không tự cắt).
-                        // Admin dùng zoom (+/−) và kéo để chọn phần muốn hiển thị.
-                        objectFit: "contain",
-                        transform: `translate(${tx}%, ${ty}%) scale(${scale})`,
+                        // autoAspect: khung khớp ảnh -> cover = lấp đầy hoàn hảo, không cắt.
+                        // Ngược lại contain: hiển thị trọn ảnh, admin zoom/kéo để căn.
+                        objectFit: useAuto ? "cover" : "contain",
+                        // autoAspect: bỏ transform cũ, ảnh khít khung sẵn. Ngược lại áp zoom/kéo đã lưu.
+                        transform: useAuto ? "none" : `translate(${tx}%, ${ty}%) scale(${scale})`,
                         transformOrigin: "center",
                         userSelect: "none",
                         pointerEvents: "none",
@@ -320,15 +345,19 @@ export default function ImageSlot({ placeholder, slotId, style, imgStyle }: Imag
                         zIndex: 3,
                     }}
                 >
-                    <button onClick={zoom(-0.2)} title="Thu nhỏ" aria-label="Thu nhỏ" style={ctrlBtn}>
-                        −
-                    </button>
-                    <button onClick={zoom(0.2)} title="Phóng to" aria-label="Phóng to" style={ctrlBtn}>
-                        +
-                    </button>
-                    <button onClick={reset} title="Đặt lại" aria-label="Đặt lại" style={{ ...ctrlBtn, fontSize: 13 }}>
-                        ⟲
-                    </button>
+                    {!useAuto && (
+                        <>
+                            <button onClick={zoom(-0.2)} title="Thu nhỏ" aria-label="Thu nhỏ" style={ctrlBtn}>
+                                −
+                            </button>
+                            <button onClick={zoom(0.2)} title="Phóng to" aria-label="Phóng to" style={ctrlBtn}>
+                                +
+                            </button>
+                            <button onClick={reset} title="Đặt lại" aria-label="Đặt lại" style={{ ...ctrlBtn, fontSize: 13 }}>
+                                ⟲
+                            </button>
+                        </>
+                    )}
                     <button onClick={(e) => { e.stopPropagation(); openPicker(); }} title="Đổi ảnh" aria-label="Đổi ảnh" style={ctrlBtn}>
                         🖼
                     </button>

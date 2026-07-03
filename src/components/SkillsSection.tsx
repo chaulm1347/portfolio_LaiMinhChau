@@ -12,7 +12,7 @@ export default function SkillsSection() {
     const c = getPortfolioContent(locale);
 
     return (
-        <div style={{ padding: "56px 48px", borderTop: "4px solid #000" }}>
+        <div className="rsec" style={{ padding: "56px 48px", borderTop: "4px solid #000" }}>
             <h2
                 style={{
                     font: `400 42px/1 ${BANGERS}`,

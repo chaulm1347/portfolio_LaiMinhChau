@@ -13,7 +13,7 @@ export default function ProjectsSection() {
     const c = getPortfolioContent(locale);
 
     return (
-        <div style={{ padding: "36px 48px" }}>
+        <div className="rsec" style={{ padding: "36px 48px" }}>
             <h2
                 style={{
                     font: `400 42px/1 ${BANGERS}`,
@@ -116,7 +116,12 @@ export default function ProjectsSection() {
 
                     {/* Document stack slot */}
                     <div style={{ marginTop: 20, border: "2px dashed #ccc", borderRadius: 4, overflow: "hidden" }}>
-                        <ImageSlot slotId="flagship-docs" placeholder={c.docsPlaceholder} style={{ height: 332, background: "#fafafa", font: `500 14px/1.5 ${MONT}` }} />
+                        <ImageSlot
+                            slotId="flagship-docs"
+                            placeholder={c.docsPlaceholder}
+                            autoAspect
+                            style={{ aspectRatio: "16 / 10", height: "auto", background: "#fafafa", font: `500 14px/1.5 ${MONT}` }}
+                        />
                     </div>
                     <p style={{ font: `italic 400 13px/1.4 ${MONT}`, color: "#aaa", margin: "6px 0 0", textAlign: "center" }}>
                         {c.docsCaption}
@@ -129,6 +134,7 @@ export default function ProjectsSection() {
                         <ImageSlot
                             slotId="flagship-teaser"
                             placeholder={c.teaserPlaceholder}
+                            autoAspect
                             style={{ aspectRatio: "1470 / 754", height: "auto", font: `500 14px/1.5 ${MONT}` }}
                             imgStyle={{ filter: "blur(1.75px)" }}
                         />

@@ -17,7 +17,7 @@ export default function JourneyGallery() {
     const aspects = [0.73, 0.73, 0.73, 1.0, 1.85];
 
     return (
-        <div style={{ padding: "36px 48px" }}>
+        <div className="rsec" style={{ padding: "36px 48px" }}>
             <div
                 className="lift-hover"
                 style={{ border: "4px solid #000", boxShadow: "8px 8px 0 #fca311", overflow: "hidden" }}
@@ -35,6 +35,7 @@ export default function JourneyGallery() {
                     {c.galleryLabel}
                 </div>
                 <div
+                    className="rgallery"
                     style={{
                         display: "grid",
                         // độ rộng mỗi cột tỉ lệ với aspect -> mọi khung cùng chiều cao & khớp tỷ lệ ảnh
