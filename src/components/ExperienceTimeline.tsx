@@ -67,41 +67,61 @@ export default function ExperienceTimeline() {
                         <h3 style={{ font: `600 ${ch.titleFont} ${MONT}`, color: "#1a1a1a", margin: "0 0 5px" }}>{ch.title}</h3>
                         <p style={{ font: `400 16px/1.4 ${MONT}`, color: "#888", margin: `0 0 ${ch.subGap}` }}>{italicizeYears(ch.subtitle)}</p>
                         <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
-                            {ch.stats.map((st, j) => (
-                                <div
-                                    key={j}
-                                    style={{
-                                        flex: 1,
-                                        minWidth: 130,
-                                        padding: ch.statPad,
-                                        background: ch.statBg,
-                                        border: "2px solid #000",
-                                        textAlign: "center",
-                                        boxShadow: "2px 2px 0 #000",
-                                    }}
-                                >
-                                    <div
-                                        style={{
-                                            font: `400 ${ch.statFont} ${BANGERS}`,
-                                            color: ch.statColor,
-                                            marginBottom: 6,
-                                            letterSpacing: "1px",
-                                        }}
+                            {ch.stats.map((st, j) => {
+                                const boxStyle: React.CSSProperties = {
+                                    flex: 1,
+                                    minWidth: 130,
+                                    padding: ch.statPad,
+                                    background: ch.statBg,
+                                    border: "2px solid #000",
+                                    textAlign: "center",
+                                    boxShadow: "2px 2px 0 #000",
+                                };
+                                const inner = (
+                                    <>
+                                        <div
+                                            style={{
+                                                font: `400 ${ch.statFont} ${BANGERS}`,
+                                                color: ch.statColor,
+                                                marginBottom: 6,
+                                                letterSpacing: "1px",
+                                            }}
+                                        >
+                                            {st.value}
+                                        </div>
+                                        <div
+                                            style={{
+                                                font: `500 11px/1.3 ${MONT}`,
+                                                color: st.link ? ch.statColor : "#666",
+                                                textTransform: "uppercase",
+                                                letterSpacing: ".3px",
+                                                textDecoration: st.link ? "underline" : "none",
+                                                whiteSpace: "pre-line",
+                                            }}
+                                        >
+                                            {st.label}
+                                            {st.link ? " ↗" : ""}
+                                        </div>
+                                    </>
+                                );
+                                return st.link ? (
+                                    <a
+                                        key={j}
+                                        href={st.link}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="lift-hover"
+                                        title={st.label}
+                                        style={{ ...boxStyle, display: "block", textDecoration: "none", cursor: "pointer" }}
                                     >
-                                        {st.value}
+                                        {inner}
+                                    </a>
+                                ) : (
+                                    <div key={j} style={boxStyle}>
+                                        {inner}
                                     </div>
-                                    <div
-                                        style={{
-                                            font: `500 11px/1.3 ${MONT}`,
-                                            color: "#666",
-                                            textTransform: "uppercase",
-                                            letterSpacing: ".3px",
-                                        }}
-                                    >
-                                        {st.label}
-                                    </div>
-                                </div>
-                            ))}
+                                );
+                            })}
                         </div>
                     </div>
                 </div>

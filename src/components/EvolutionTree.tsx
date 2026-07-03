@@ -23,11 +23,11 @@ export default function EvolutionTree() {
 
     // 5 badge nhánh — map theo trục thời gian: cao nhất = giai đoạn mới nhất.
     const badges = [
-        { x: 175, y: 98, sproutX: 255, color: "#e63946", label: c.evoLabel5, sub: "", narr: c.evoNarr5 }, // Left upper
-        { x: 870, y: 123, sproutX: 950, color: "#b37400", label: c.evoLabel4, sub: c.evoSub4, narr: c.evoNarr4 }, // Right upper
-        { x: 70, y: 278, sproutX: 150, color: "#2e7d32", label: c.evoLabel3, sub: "", narr: c.evoNarr3 }, // Left middle
-        { x: 955, y: 368, sproutX: 1035, color: "#2e7d32", label: c.evoLabel2, sub: c.evoSub2, narr: c.evoNarr2 }, // Right lower
-        { x: 125, y: 493, sproutX: 205, color: "#4a8bc2", label: c.evoLabel1, sub: c.evoSub1, narr: c.evoNarr1 }, // Left lower
+        { x: 175, y: 98, sproutX: 255, color: "#e63946", num: "04", label: c.evoLabel5, sub: "", narr: c.evoNarr5 }, // Left upper — Chương 04
+        { x: 870, y: 123, sproutX: 950, color: "#b37400", num: "03", label: c.evoLabel4, sub: c.evoSub4, narr: c.evoNarr4 }, // Right upper — Chương 03
+        { x: 70, y: 278, sproutX: 150, color: "#2e7d32", num: "02", label: c.evoLabel3, sub: "", narr: c.evoNarr3 }, // Left middle — Chương 02
+        { x: 955, y: 368, sproutX: 1035, color: "#2e7d32", num: "01", label: c.evoLabel2, sub: c.evoSub2, narr: c.evoNarr2 }, // Right lower — Chương 01
+        { x: 125, y: 493, sproutX: 205, color: "#4a8bc2", num: "00", label: c.evoLabel1, sub: c.evoSub1, narr: c.evoNarr1 }, // Left lower — Khởi nguồn
     ];
 
     return (
@@ -48,7 +48,7 @@ export default function EvolutionTree() {
             </h2>
             <p style={{ font: `italic 600 18px/1.5 ${MONT}`, color: "#3a3a3a", margin: "0 0 32px", textAlign: "justify" }}>{c.narrativeIntro}</p>
 
-            <div style={{ position: "relative", maxWidth: 1040, margin: "0 auto" }}>
+            <div style={{ position: "relative", maxWidth: 1200, margin: "0 auto" }}>
                 <svg
                     viewBox="0 0 1200 900"
                     style={{ width: "100%", height: "auto", display: "block" }}
@@ -222,11 +222,26 @@ export default function EvolutionTree() {
                         <path d="M 930 440 C 942 430 940 416 924 416 C 914 424 916 436 930 440 Z" />
                     </g>
 
+                    {/* Foliage tufts — đặt DƯỚI badge để không che chữ */}
+                    <g stroke={INK} strokeWidth="4" strokeLinejoin="round">
+                        <path d="M 318 214 C 300 206 300 184 320 176 C 342 170 358 182 352 200 C 347 214 332 221 318 214 Z" fill={LEAF_MID} />
+                        <path d="M 344 178 C 334 168 340 154 356 156 C 370 158 374 172 362 180 C 356 184 348 184 344 178 Z" fill={LEAF_FRONT} />
+                        <path d="M 216 392 C 198 384 198 362 218 354 C 240 348 256 360 250 378 C 245 392 230 399 216 392 Z" fill={LEAF_FRONT} />
+                        <path d="M 242 356 C 234 346 240 332 256 334 C 270 336 274 350 262 358 C 254 362 246 362 242 356 Z" fill={LEAF_MID} />
+                        <path d="M 268 502 C 252 494 254 474 274 468 C 294 464 308 476 302 492 C 297 505 282 510 268 502 Z" fill={LEAF_MID} />
+                        <path d="M 886 238 C 904 230 904 208 884 200 C 862 194 848 206 854 224 C 859 238 874 245 886 238 Z" fill={LEAF_MID} />
+                        <path d="M 862 202 C 872 192 866 178 850 180 C 836 182 832 196 844 204 C 850 208 858 208 862 202 Z" fill={LEAF_FRONT} />
+                        <path d="M 972 434 C 990 426 990 404 970 396 C 948 390 934 402 940 420 C 945 434 960 441 972 434 Z" fill={LEAF_FRONT} />
+                        <path d="M 468 198 C 450 186 454 164 476 160 C 496 158 508 170 504 186 C 500 200 480 206 468 198 Z" fill={LEAF_FRONT} />
+                        <path d="M 732 200 C 750 188 746 166 724 162 C 704 160 692 172 696 188 C 700 202 720 208 732 200 Z" fill={LEAF_MID} />
+                        <path d="M 586 204 C 576 192 583 178 601 178 C 619 178 625 192 615 203 C 605 212 593 212 586 204 Z" fill={LEAF_FRONT} />
+                    </g>
+
                     {/* ===== Badges: điền nội dung 5 giai đoạn ===== */}
                     {badges.map((b, i) => (
                         <g key={i}>
-                            <rect x={b.x} y={b.y} width="160" height="104" rx="24" fill="#F5EFE0" stroke={INK} strokeWidth="5" />
-                            <foreignObject x={b.x + 10} y={b.y + 9} width={140} height={86}>
+                            <rect x={b.x} y={b.y} width="222" height="150" rx="26" fill="#F5EFE0" stroke={INK} strokeWidth="5" />
+                            <foreignObject x={b.x + 14} y={b.y + 13} width={194} height={124}>
                                 <div
                                     style={{
                                         height: "100%",
@@ -237,11 +252,13 @@ export default function EvolutionTree() {
                                         padding: "0 2px",
                                     }}
                                 >
-                                    <div style={{ font: `400 15px/1.05 ${BANGERS}`, color: b.color, letterSpacing: "0.5px" }}>{b.label}</div>
+                                    <div style={{ font: `400 21px/1.05 ${BANGERS}`, color: b.color, letterSpacing: "0.5px" }}>
+                                        <span style={{ opacity: 0.65 }}>{b.num}</span> · {b.label}
+                                    </div>
                                     {b.sub ? (
-                                        <div style={{ font: `600 9.5px/1.2 ${MONT}`, color: "#8a7a5a", marginTop: 1 }}>{b.sub}</div>
+                                        <div style={{ font: `600 13px/1.25 ${MONT}`, color: "#8a7a5a", marginTop: 3 }}>{b.sub}</div>
                                     ) : null}
-                                    <div style={{ font: `500 9.5px/1.22 ${MONT}`, color: "#3a3a3a", marginTop: 3 }}>{b.narr}</div>
+                                    <div style={{ font: `500 13px/1.32 ${MONT}`, color: "#3a3a3a", marginTop: 4 }}>{b.narr}</div>
                                 </div>
                             </foreignObject>
                             <use href="#sprout" x={b.sproutX} y={b.y} fill={LEAF_MID} />
@@ -265,8 +282,8 @@ export default function EvolutionTree() {
                                     padding: "0 4px",
                                 }}
                             >
-                                <div style={{ font: `400 30px/1 ${BANGERS}`, color: "#B8860B", letterSpacing: "1px" }}>{c.youAreHere}</div>
-                                <div style={{ font: `500 11px/1.3 ${MONT}`, color: "#4a4a4a", marginTop: 6 }}>{c.crownText}</div>
+                                <div style={{ font: `400 38px/1 ${BANGERS}`, color: "#B8860B", letterSpacing: "1px" }}>{c.youAreHere}</div>
+                                <div style={{ font: `500 13.5px/1.32 ${MONT}`, color: "#4a4a4a", marginTop: 8 }}>{c.crownText}</div>
                             </div>
                         </foreignObject>
                         <path d="M 600 36 C 599 28 600 22 603 16" fill="none" stroke={INK} strokeWidth="3" strokeLinecap="round" />
@@ -275,20 +292,6 @@ export default function EvolutionTree() {
                         <path d="M 618 32 C 628 28 629 18 618 16 C 610 20 610 28 618 32 Z" fill="#DCC553" stroke={INK} strokeWidth="2.5" strokeLinejoin="round" />
                     </g>
 
-                    {/* Foliage tufts woven OVER badge inner corners */}
-                    <g stroke={INK} strokeWidth="4" strokeLinejoin="round">
-                        <path d="M 318 214 C 300 206 300 184 320 176 C 342 170 358 182 352 200 C 347 214 332 221 318 214 Z" fill={LEAF_MID} />
-                        <path d="M 344 178 C 334 168 340 154 356 156 C 370 158 374 172 362 180 C 356 184 348 184 344 178 Z" fill={LEAF_FRONT} />
-                        <path d="M 216 392 C 198 384 198 362 218 354 C 240 348 256 360 250 378 C 245 392 230 399 216 392 Z" fill={LEAF_FRONT} />
-                        <path d="M 242 356 C 234 346 240 332 256 334 C 270 336 274 350 262 358 C 254 362 246 362 242 356 Z" fill={LEAF_MID} />
-                        <path d="M 268 502 C 252 494 254 474 274 468 C 294 464 308 476 302 492 C 297 505 282 510 268 502 Z" fill={LEAF_MID} />
-                        <path d="M 886 238 C 904 230 904 208 884 200 C 862 194 848 206 854 224 C 859 238 874 245 886 238 Z" fill={LEAF_MID} />
-                        <path d="M 862 202 C 872 192 866 178 850 180 C 836 182 832 196 844 204 C 850 208 858 208 862 202 Z" fill={LEAF_FRONT} />
-                        <path d="M 972 434 C 990 426 990 404 970 396 C 948 390 934 402 940 420 C 945 434 960 441 972 434 Z" fill={LEAF_FRONT} />
-                        <path d="M 468 198 C 450 186 454 164 476 160 C 496 158 508 170 504 186 C 500 200 480 206 468 198 Z" fill={LEAF_FRONT} />
-                        <path d="M 732 200 C 750 188 746 166 724 162 C 704 160 692 172 696 188 C 700 202 720 208 732 200 Z" fill={LEAF_MID} />
-                        <path d="M 586 204 C 576 192 583 178 601 178 C 619 178 625 192 615 203 C 605 212 593 212 586 204 Z" fill={LEAF_FRONT} />
-                    </g>
                 </svg>
             </div>
         </div>

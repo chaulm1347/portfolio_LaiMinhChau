@@ -7,6 +7,25 @@ import { getPortfolioContent } from "@/lib/portfolioContent";
 const BANGERS = "var(--font-bangers), sans-serif";
 const MONT = "var(--font-montserrat), sans-serif";
 
+// Gắn hyperlink cho cụm "JCI Vietnam" xuất hiện trong đoạn mô tả.
+function linkifyJCI(text: string) {
+    return text.split(/(JCI Vietnam)/g).map((part, i) =>
+        part === "JCI Vietnam" ? (
+            <a
+                key={i}
+                href="https://jci.vn/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: "#e63946", fontWeight: 700, textDecoration: "underline" }}
+            >
+                {part}
+            </a>
+        ) : (
+            part
+        ),
+    );
+}
+
 export default function LeadershipSection() {
     const { locale } = useLanguage();
     const c = getPortfolioContent(locale);
@@ -27,7 +46,9 @@ export default function LeadershipSection() {
                 <Users size={38} color="#e63946" className="animate-[wiggle_3s_ease-in-out_infinite]" strokeWidth={2.5} />
                 {c.sectLead}
             </h2>
-            <p style={{ font: `italic 600 17px/1.5 ${MONT}`, color: "#3a3a3a", margin: "0 0 26px", textAlign: "justify" }}>{c.leaderNarrative}</p>
+            <p style={{ font: `italic 600 17px/1.5 ${MONT}`, color: "#3a3a3a", margin: "0 0 26px", textAlign: "justify" }}>
+                {linkifyJCI(c.leaderNarrative)}
+            </p>
 
             {c.leaderRoles.map((l, i) => (
                 <div key={i} style={{ display: "flex", gap: 20, marginBottom: 20, alignItems: "flex-start" }}>
@@ -48,7 +69,20 @@ export default function LeadershipSection() {
                         {l.year}
                     </div>
                     <div>
-                        <div style={{ font: `700 19px/1.3 ${MONT}`, color: "#1a1a1a", marginBottom: 5 }}>{l.title}</div>
+                        <div style={{ font: `700 19px/1.3 ${MONT}`, color: "#1a1a1a", marginBottom: 5 }}>
+                            {l.link ? (
+                                <a
+                                    href={l.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    style={{ color: "#1a1a1a", textDecoration: "underline", textDecorationColor: "#e63946" }}
+                                >
+                                    {l.title}
+                                </a>
+                            ) : (
+                                l.title
+                            )}
+                        </div>
                         <div style={{ font: `500 16px/1.55 ${MONT}`, color: "#2f2f2f" }}>{l.desc}</div>
                     </div>
                 </div>

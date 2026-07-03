@@ -116,7 +116,7 @@ export default function ProjectsSection() {
 
                     {/* Document stack slot */}
                     <div style={{ marginTop: 20, border: "2px dashed #ccc", borderRadius: 4, overflow: "hidden" }}>
-                        <ImageSlot slotId="flagship-docs" placeholder={c.docsPlaceholder} style={{ height: 170, background: "#fafafa", font: `500 14px/1.5 ${MONT}` }} />
+                        <ImageSlot slotId="flagship-docs" placeholder={c.docsPlaceholder} style={{ height: 332, background: "#fafafa", font: `500 14px/1.5 ${MONT}` }} />
                     </div>
                     <p style={{ font: `italic 400 13px/1.4 ${MONT}`, color: "#aaa", margin: "6px 0 0", textAlign: "center" }}>
                         {c.docsCaption}
@@ -126,7 +126,12 @@ export default function ProjectsSection() {
                 {/* TIER 3: Teaser Visual */}
                 <div style={{ padding: "22px 34px", background: "#faf5ee", borderBottom: "3px solid #000" }}>
                     <div style={{ border: "2px solid #000", boxShadow: "3px 3px 0 #000", overflow: "hidden", position: "relative" }}>
-                        <ImageSlot slotId="flagship-teaser" placeholder={c.teaserPlaceholder} style={{ height: 230, font: `500 14px/1.5 ${MONT}` }} />
+                        <ImageSlot
+                            slotId="flagship-teaser"
+                            placeholder={c.teaserPlaceholder}
+                            style={{ aspectRatio: "1470 / 754", height: "auto", font: `500 14px/1.5 ${MONT}` }}
+                            imgStyle={{ filter: "blur(1.75px)" }}
+                        />
                         <div
                             style={{
                                 position: "absolute",

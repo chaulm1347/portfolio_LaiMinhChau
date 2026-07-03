@@ -1,3 +1,50 @@
 {
-  "avatar": "/uploads/avatar.jpg"
+  "journey-3": {
+    "url": "/uploads/journey-3.jpg",
+    "scale": 1.2,
+    "tx": 3.952843535332609,
+    "ty": -1.666666666666666
+  },
+  "journey-2": {
+    "url": "/uploads/journey-2.jpg",
+    "scale": 4.8,
+    "tx": 27.281690907212393,
+    "ty": -50.473756217611644
+  },
+  "journey-1": {
+    "url": "/uploads/journey-1.jpg",
+    "scale": 1.4,
+    "tx": 9.571703897419743,
+    "ty": 0.8333180745442708
+  },
+  "journey-5": {
+    "url": "/uploads/journey-5.jpg",
+    "scale": 1.4,
+    "tx": 1.1110282687262754,
+    "ty": -1.4383551451688366
+  },
+  "flagship-teaser": {
+    "url": "/uploads/flagship-teaser.jpg",
+    "scale": 1,
+    "tx": 0,
+    "ty": 0
+  },
+  "journey-4": {
+    "url": "/uploads/journey-4.jpg",
+    "scale": 1,
+    "tx": 0,
+    "ty": -0.000013168615029091058
+  },
+  "avatar": {
+    "url": "/uploads/avatar.jpg",
+    "scale": 1.2,
+    "tx": -3.01723093538563,
+    "ty": 0.8522727863847761
+  },
+  "flagship-docs": {
+    "url": "/uploads/flagship-docs.jpg",
+    "scale": 1.8,
+    "tx": 0.5310996100872083,
+    "ty": -33.886334973232145
+  }
 }

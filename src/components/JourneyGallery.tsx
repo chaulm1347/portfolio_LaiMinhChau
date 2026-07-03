@@ -12,6 +12,9 @@ export default function JourneyGallery() {
     const c = getPortfolioContent(locale);
 
     const photos = [c.photoLabel1, c.photoLabel2, c.photoLabel3, c.photoLabel4, c.photoLabel5];
+    // Tỷ lệ (rộng/cao) từng khung — khớp tỷ lệ ảnh để ở zoom 1× ảnh lấp đầy khung, không bị cắt.
+    // 4 ô đầu ảnh dọc, ô 5 ảnh ngang. Chỉnh số ở đây để tăng/giảm độ rộng từng ô.
+    const aspects = [0.73, 0.73, 0.73, 1.0, 1.85];
 
     return (
         <div style={{ padding: "36px 48px" }}>
@@ -34,7 +37,8 @@ export default function JourneyGallery() {
                 <div
                     style={{
                         display: "grid",
-                        gridTemplateColumns: "repeat(5,1fr)",
+                        // độ rộng mỗi cột tỉ lệ với aspect -> mọi khung cùng chiều cao & khớp tỷ lệ ảnh
+                        gridTemplateColumns: aspects.map((a) => `${a}fr`).join(" "),
                         gap: 0,
                         background: "#faf5ee",
                     }}
@@ -45,7 +49,8 @@ export default function JourneyGallery() {
                             slotId={`journey-${i + 1}`}
                             placeholder={label}
                             style={{
-                                height: 220,
+                                aspectRatio: `${aspects[i]}`,
+                                height: "auto",
                                 background: "#faf5ee",
                                 font: `500 15px/1.5 ${MONT}`,
                                 borderRight: i < photos.length - 1 ? "2px solid #000" : undefined,

@@ -7,6 +7,7 @@ import { Locale } from "@/lib/translations";
 export interface ChapterStat {
   value: string;
   label: string;
+  link?: string;
 }
 
 export interface Chapter {
@@ -58,6 +59,7 @@ export interface LeaderRole {
   year: string;
   title: string;
   desc: string;
+  link?: string;
 }
 
 export interface PortfolioContent {
@@ -219,7 +221,7 @@ export function getPortfolioContent(locale: Locale): PortfolioContent {
       statPad: "20px",
       statFont: "40px/1",
       stats: [
-        { value: "+50%", label: vi ? "Doanh số YoY (Dòng sản phẩm AI)" : "YoY Revenue (AI product line)" },
+        { value: "+50%", label: vi ? "Doanh số YoY\n(Dòng sản phẩm AI)" : "YoY Revenue\n(AI product line)" },
         {
           value: "25+",
           label: vi
@@ -227,7 +229,11 @@ export function getPortfolioContent(locale: Locale): PortfolioContent {
             : "Affiliate & Cross-Sale Partners (Enterprises, Associations,...)",
         },
         { value: "400+", label: vi ? "C-level trong cộng đồng" : "C-level in Community" },
-        { value: "6+", label: vi ? "Webinars (Nhận Google Fund)" : "Webinars (Won Google Fund)" },
+        {
+          value: "6+",
+          label: vi ? "Webinars (Nhận Google Fund)" : "Webinars (Won Google Fund)",
+          link: "https://www.matbao.net/su-kien/chuoi-webinar-google-workspace.html",
+        },
       ],
     },
     {
@@ -413,8 +419,8 @@ export function getPortfolioContent(locale: Locale): PortfolioContent {
       : "If I were to summarize my career journey in the most concise way, I’d tell you about the evolution tree...",
     youAreHere: "Open To Work",
     crownText: vi
-      ? "Nỗ lực tìm kiếm một cơ hội mới phù hợp để tạo ra giá trị trên con đường Tech Product đã chọn"
-      : "Seeking the right opportunity to create value on the chosen Tech Product path",
+      ? "Đang tìm kiếm bến đỗ phù hợp trong lĩnh vực Công nghệ (Vị trí PO/PM/Delivery/PDM/...)"
+      : "Looking for the right place in the Technology field (PO/PM/Delivery/PDM/... roles)",
 
     evoLabel1,
     evoLabel2,
@@ -488,8 +494,9 @@ export function getPortfolioContent(locale: Locale): PortfolioContent {
       {
         year: "22 - 23",
         title: vi
-          ? "Đồng sáng lập Creative Young Entrepreneur Program (Chương trình Doanh nhân trẻ sáng tạo)"
-          : "Co-founder Creative Young Entrepreneur Program",
+          ? "Co-Founder Chương trình Doanh Nhân trẻ sáng tạo CYE (Lần đầu tiên ra mắt tại Việt Nam)"
+          : "Co-Founder Creative Young Entrepreneur Program - CYE (First launched in Vietnam)",
+        link: "https://tudonghoangaynay.vn/cye-launching-co-hoi-cho-doanh-nghiep-tre-sang-tao-2584.html",
         desc: vi
           ? "50+ Doanh nghiệp đội thi · 23 mentors · 16 đối tác · 39 sự kiện · thu hút sự quan tâm 500+ SMEs và Quỹ · 350.000 USD tài trợ hiện kim và hiện vật"
           : "50+ competing businesses · 23 mentors · 16 partners · 39 events · attracted 500+ SMEs and Funds · $350,000 in cash & in-kind sponsorship",

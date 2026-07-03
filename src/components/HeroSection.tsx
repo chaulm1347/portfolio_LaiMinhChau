@@ -72,7 +72,7 @@ export default function HeroSection() {
                         <div
                             style={{
                                 width: 200,
-                                height: 244,
+                                height: 270,
                                 border: "4px solid #000",
                                 boxShadow: "8px 8px 0 #000",
                                 overflow: "hidden",
@@ -128,7 +128,7 @@ export default function HeroSection() {
                         >
                             {c.name}
                         </h1>
-                        <p style={{ font: `600 18px/1.4 ${MONT}`, color: "rgba(255,255,255,.85)", margin: "0 0 16px" }}>
+                        <p style={{ font: `600 14px/1.4 ${MONT}`, color: "rgba(255,255,255,.85)", margin: "0 0 16px" }}>
                             {c.tagline}
                         </p>
                         <div
