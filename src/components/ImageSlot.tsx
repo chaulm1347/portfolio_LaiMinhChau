@@ -240,7 +240,7 @@ export default function ImageSlot({ placeholder, slotId, style, imgStyle, autoAs
         border: "2px solid #000",
         borderRadius: 4,
         cursor: "pointer",
-        font: "700 14px/1 var(--font-montserrat), sans-serif",
+        font: "700 14px/1 var(--font-nunito), sans-serif",
         padding: 0,
     };
 
@@ -262,9 +262,9 @@ export default function ImageSlot({ placeholder, slotId, style, imgStyle, autoAs
                 justifyContent: "center",
                 textAlign: "center",
                 padding: "8px 10px",
-                background: "#fef3e2",
-                color: "#b3a695",
-                font: "500 10px/1.5 var(--font-montserrat), sans-serif",
+                background: "#f5f3ee",
+                color: "#888888",
+                font: "500 10px/1.5 var(--font-nunito), sans-serif",
                 cursor: editable ? (imgSrc ? (canAdjust ? "grab" : "default") : busy ? "default" : "pointer") : "default",
                 overflow: "hidden",
                 touchAction: canAdjust ? "none" : undefined,
@@ -299,7 +299,7 @@ export default function ImageSlot({ placeholder, slotId, style, imgStyle, autoAs
                 <span>
                     {placeholder}
                     {editable && (
-                        <span style={{ display: "block", marginTop: 6, fontWeight: 700, color: "#e63946" }}>
+                        <span style={{ display: "block", marginTop: 6, fontWeight: 700, color: "#d92027" }}>
                             {busy ? "⏳ Đang tải..." : "📁 Nhấn để chọn ảnh"}
                         </span>
                     )}
@@ -316,7 +316,7 @@ export default function ImageSlot({ placeholder, slotId, style, imgStyle, autoAs
                         justifyContent: "center",
                         background: "rgba(0,0,0,.35)",
                         color: "#fff",
-                        font: "700 14px/1 var(--font-montserrat), sans-serif",
+                        font: "700 14px/1 var(--font-nunito), sans-serif",
                     }}
                 >
                     ⏳ Đang tải...
@@ -361,7 +361,7 @@ export default function ImageSlot({ placeholder, slotId, style, imgStyle, autoAs
                     <button onClick={(e) => { e.stopPropagation(); openPicker(); }} title="Đổi ảnh" aria-label="Đổi ảnh" style={ctrlBtn}>
                         🖼
                     </button>
-                    <button onClick={removeImage} title="Xóa ảnh" aria-label="Xóa ảnh" style={{ ...ctrlBtn, background: "#e63946", color: "#fff", fontSize: 16 }}>
+                    <button onClick={removeImage} title="Xóa ảnh" aria-label="Xóa ảnh" style={{ ...ctrlBtn, background: "#d92027", color: "#fff", fontSize: 16 }}>
                         ×
                     </button>
                 </div>

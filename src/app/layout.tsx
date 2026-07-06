@@ -1,21 +1,29 @@
 import type { Metadata, Viewport } from "next";
-import { Bangers, Montserrat } from "next/font/google";
+import { Bangers, Patrick_Hand, Nunito } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/context/LanguageContext";
 
-// Comic Header Font - Bangers (giữ nguyên cho phong cách comic)
+// Display font - Bangers (tiêu đề, tên hero, chapter numbers, starburst) — hỗ trợ tiếng Việt
 const bangers = Bangers({
   weight: "400",
-  subsets: ["latin"],
+  subsets: ["latin", "vietnamese"],
   variable: "--font-bangers",
   display: "swap",
 });
 
-// Body Font - Montserrat (dễ đọc, hiện đại; hỗ trợ tiếng Việt)
-const montserrat = Montserrat({
-  weight: ["400", "500", "600", "700", "800"],
-  subsets: ["latin", "latin-ext", "vietnamese"],
-  variable: "--font-montserrat",
+// Dialogue font - Patrick Hand (speech bubble, caption, chú thích) — viết tay, hỗ trợ tiếng Việt
+const patrickHand = Patrick_Hand({
+  weight: "400",
+  subsets: ["latin", "vietnamese"],
+  variable: "--font-patrick",
+  display: "swap",
+});
+
+// Body font - Nunito (toàn bộ body text) — tròn trịa, dễ đọc, hỗ trợ tiếng Việt
+const nunito = Nunito({
+  weight: ["400", "700", "900"],
+  subsets: ["latin", "vietnamese"],
+  variable: "--font-nunito",
   display: "swap",
 });
 
@@ -57,7 +65,7 @@ export default function RootLayout({
   return (
     <html lang="vi" suppressHydrationWarning>
       <body
-        className={`${bangers.variable} ${montserrat.variable} antialiased font-body`}
+        className={`${bangers.variable} ${patrickHand.variable} ${nunito.variable} antialiased font-body`}
         suppressHydrationWarning
       >
         <LanguageProvider>

@@ -1,27 +1,49 @@
 "use client";
 
-import { Sparkles, Rocket } from "lucide-react";
+import { Rocket } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { getPortfolioContent } from "@/lib/portfolioContent";
 import ImageSlot from "./ImageSlot";
+import StarburstBadge from "./StarburstBadge";
 
 const BANGERS = "var(--font-bangers), sans-serif";
-const MONT = "var(--font-montserrat), sans-serif";
+const MONT = "var(--font-nunito), sans-serif";
+const PATRICK = "var(--font-patrick), cursive";
 
 export default function HeroSection() {
     const { locale } = useLanguage();
     const c = getPortfolioContent(locale);
 
     return (
-        <div className="rsec" style={{ padding: "0 48px" }}>
+        <div className="rsec rsec-keep" style={{ padding: "0 48px" }}>
+            {/* Starburst neo trong hero — chỉ hiện ở màn hình đầu (cuộn là mất), không đè text */}
+            <div
+                aria-hidden="true"
+                className="hidden xl:block"
+                style={{ position: "absolute", left: -68, top: 96, zIndex: 0, pointerEvents: "none" }}
+            >
+                <div className="animate-[float_4s_ease-in-out_infinite]">
+                    <StarburstBadge text="SHIP IT!" bgColor="#d92027" textColor="#ffffff" rotation={-8} size={120} />
+                </div>
+            </div>
+            <div
+                aria-hidden="true"
+                className="hidden xl:block"
+                style={{ position: "absolute", right: -68, top: 150, zIndex: 0, pointerEvents: "none" }}
+            >
+                <div className="animate-[float_5s_ease-in-out_infinite_0.5s]">
+                    <StarburstBadge text="DELIVER!" bgColor="#0057a8" textColor="#ffcc00" rotation={8} size={120} />
+                </div>
+            </div>
+
             {/* ══ COVER ══ */}
             <div
                 style={{
                     marginTop: 40,
-                    background: "#e63946",
+                    background: "linear-gradient(135deg, #003b73, #0057a8)",
                     position: "relative",
                     overflow: "hidden",
-                    border: "4px solid #1a1a1a",
+                    border: "4px solid #0d0d0d",
                     boxShadow: "10px 10px 0 rgba(0,0,0,.12)",
                 }}
             >
@@ -50,12 +72,49 @@ export default function HeroSection() {
                     <line x1="280" y1="250" x2="120" y2="300" stroke="#000" strokeWidth="3" />
                 </svg>
 
-                {/* decorative floating icon */}
+                {/* Badge "ISSUE #01" góc trên trái */}
                 <div
-                    style={{ position: "absolute", top: 24, right: 28, color: "rgba(255,255,255,.5)", zIndex: 1 }}
-                    className="animate-[wiggle_3s_ease-in-out_infinite]"
+                    style={{
+                        position: "absolute",
+                        top: 18,
+                        left: 18,
+                        zIndex: 3,
+                        background: "#ffcc00",
+                        border: "2px solid #0d0d0d",
+                        padding: "4px 12px",
+                        transform: "rotate(-3deg)",
+                        boxShadow: "3px 3px 0 #0d0d0d",
+                        font: `400 15px/1.3 ${BANGERS}`,
+                        color: "#0d0d0d",
+                        letterSpacing: "1px",
+                    }}
                 >
-                    <Sparkles size={40} strokeWidth={2.5} />
+                    ISSUE #01 · 2026
+                </div>
+
+                {/* Logo tròn "nhà xuất bản" LMC COMICS góc trên phải */}
+                <div
+                    style={{ position: "absolute", top: 16, right: 20, zIndex: 3 }}
+                    className="animate-[float_5s_ease-in-out_infinite]"
+                >
+                    <div
+                        style={{
+                            width: 78,
+                            height: 78,
+                            borderRadius: "50%",
+                            background: "#fff",
+                            border: "3px solid #0d0d0d",
+                            boxShadow: "3px 3px 0 #0d0d0d",
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            transform: "rotate(6deg)",
+                        }}
+                    >
+                        <span style={{ font: `400 22px/1 ${BANGERS}`, color: "#d92027", letterSpacing: "1px" }}>LMC</span>
+                        <span style={{ font: `900 8px/1 ${MONT}`, color: "#0057a8", letterSpacing: "2px", marginTop: 2 }}>COMICS</span>
+                    </div>
                 </div>
 
                 <div
@@ -77,7 +136,7 @@ export default function HeroSection() {
                                 border: "4px solid #000",
                                 boxShadow: "8px 8px 0 #000",
                                 overflow: "hidden",
-                                background: "#fef3e2",
+                                background: "#e6f0fa",
                             }}
                         >
                             <ImageSlot slotId="avatar" placeholder={c.avatarPlaceholder} style={{ font: `500 15px/1.5 ${MONT}` }} />
@@ -90,10 +149,10 @@ export default function HeroSection() {
                                 left: "50%",
                                 transform: "translateX(-50%)",
                                 padding: "5px 18px",
-                                background: "#fca311",
-                                border: "3px solid #000",
+                                background: "#ffcc00",
+                                border: "3px solid #0d0d0d",
                                 font: `400 15px/1.3 ${BANGERS}`,
-                                color: "#000",
+                                color: "#5c4700",
                                 letterSpacing: "1.5px",
                                 whiteSpace: "nowrap",
                             }}
@@ -107,10 +166,10 @@ export default function HeroSection() {
                             style={{
                                 display: "inline-block",
                                 padding: "8px 24px",
-                                background: "#fca311",
-                                border: "3px solid #000",
+                                background: "#ffcc00",
+                                border: "3px solid #0d0d0d",
                                 font: `400 21px/1.3 ${BANGERS}`,
-                                color: "#000",
+                                color: "#5c4700",
                                 letterSpacing: "2px",
                                 transform: "rotate(-2deg)",
                                 marginBottom: 16,
@@ -120,16 +179,16 @@ export default function HeroSection() {
                         </div>
                         <h1
                             style={{
-                                font: `400 72px/1 ${BANGERS}`,
+                                font: `400 72px/1.05 ${BANGERS}`,
                                 color: "#fff",
                                 margin: "0 0 10px",
                                 letterSpacing: "4px",
-                                textShadow: "4px 4px 0 #000",
+                                textShadow: "3px 3px 0 #d92027, 6px 6px 0 #0d0d0d",
                             }}
                         >
                             {c.name}
                         </h1>
-                        <p style={{ font: `600 14px/1.4 ${MONT}`, color: "rgba(255,255,255,.85)", margin: "0 0 16px" }}>
+                        <p className="hero-tagline" style={{ font: `600 14px/1.4 ${MONT}`, color: "rgba(255,255,255,.85)", margin: "0 0 16px" }}>
                             {c.tagline}
                         </p>
                         <div
@@ -154,9 +213,10 @@ export default function HeroSection() {
                 <div
                     style={{
                         padding: "28px 34px",
-                        background: "#fff",
-                        border: "3px solid #000",
-                        boxShadow: "5px 5px 0 #000",
+                        background: "#fff8db",
+                        border: "3px solid #0d0d0d",
+                        borderLeft: "6px solid #ffcc00",
+                        boxShadow: "5px 5px 0 #0d0d0d",
                         position: "relative",
                     }}
                 >
@@ -181,11 +241,11 @@ export default function HeroSection() {
                             height: 0,
                             borderStyle: "solid",
                             borderWidth: "0 12px 13px 12px",
-                            borderColor: "transparent transparent #fff transparent",
+                            borderColor: "transparent transparent #fff8db transparent",
                         }}
                     />
-                    <p style={{ font: `italic 500 20px/1.7 ${MONT}`, color: "#e63946", margin: "0 0 14px", display: "flex", alignItems: "center", gap: 10 }}>
-                        <Rocket size={22} className="animate-[float_4s_ease-in-out_infinite]" style={{ flexShrink: 0 }} />
+                    <p style={{ font: `400 23px/1.5 ${PATRICK}`, color: "#5c4700", margin: "0 0 14px", display: "flex", alignItems: "center", gap: 10 }}>
+                        <Rocket size={22} color="#c49a00" className="animate-[float_4s_ease-in-out_infinite]" style={{ flexShrink: 0 }} />
                         {c.signature}
                     </p>
                     {c.summaryParts.map((part, i) => (

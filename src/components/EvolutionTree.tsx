@@ -3,9 +3,12 @@
 import { TrendingUp } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { getPortfolioContent } from "@/lib/portfolioContent";
+import CaptionBox from "./CaptionBox";
+import PageNumber from "./PageNumber";
 
 const BANGERS = "var(--font-bangers), sans-serif";
-const MONT = "var(--font-montserrat), sans-serif";
+const MONT = "var(--font-nunito), sans-serif";
+const PATRICK = "var(--font-patrick), cursive";
 
 // Palette "summer" mặc định của Achievement Tree
 const LEAF_BACK = "#3E7A34";
@@ -23,32 +26,35 @@ export default function EvolutionTree() {
 
     // 5 badge nhánh — map theo trục thời gian: cao nhất = giai đoạn mới nhất.
     const badges = [
-        { x: 175, y: 98, sproutX: 255, color: "#e63946", num: "04", label: c.evoLabel5, sub: "", narr: c.evoNarr5 }, // Left upper — Chương 04
-        { x: 870, y: 123, sproutX: 950, color: "#b37400", num: "03", label: c.evoLabel4, sub: c.evoSub4, narr: c.evoNarr4 }, // Right upper — Chương 03
-        { x: 70, y: 278, sproutX: 150, color: "#2e7d32", num: "02", label: c.evoLabel3, sub: "", narr: c.evoNarr3 }, // Left middle — Chương 02
-        { x: 955, y: 368, sproutX: 1035, color: "#2e7d32", num: "01", label: c.evoLabel2, sub: c.evoSub2, narr: c.evoNarr2 }, // Right lower — Chương 01
-        { x: 125, y: 493, sproutX: 205, color: "#4a8bc2", num: "00", label: c.evoLabel1, sub: c.evoSub1, narr: c.evoNarr1 }, // Left lower — Khởi nguồn
+        { x: 175, y: 98, sproutX: 255, color: "#d92027", num: "04", label: c.evoLabel5, sub: "", narr: c.evoNarr5 }, // Left upper — Chương 04
+        { x: 870, y: 123, sproutX: 950, color: "#c49a00", num: "03", label: c.evoLabel4, sub: c.evoSub4, narr: c.evoNarr4 }, // Right upper — Chương 03
+        { x: 70, y: 278, sproutX: 150, color: "#0057a8", num: "02", label: c.evoLabel3, sub: "", narr: c.evoNarr3 }, // Left middle — Chương 02
+        { x: 955, y: 368, sproutX: 1035, color: "#b01a20", num: "01", label: c.evoLabel2, sub: c.evoSub2, narr: c.evoNarr2 }, // Right lower — Chương 01
+        { x: 125, y: 493, sproutX: 205, color: "#004080", num: "00", label: c.evoLabel1, sub: c.evoSub1, narr: c.evoNarr1 }, // Left lower — Khởi nguồn
     ];
 
     return (
-        <div className="rsec" style={{ padding: "56px 48px", borderTop: "4px solid #000" }}>
+        <div className="rsec" style={{ padding: "80px 48px", borderTop: "4px solid #000" }}>
+            <PageNumber n={2} />
+            <CaptionBox text={c.capOrigin} />
             <h2
                 style={{
-                    font: `400 42px/1 ${BANGERS}`,
-                    color: "#1a1a1a",
+                    font: `400 42px/1.15 ${BANGERS}`,
+                    color: "#0d0d0d",
                     margin: "0 0 8px",
-                    letterSpacing: "2px",
+                    letterSpacing: "1.5px",
+                    lineHeight: 1.3,
                     display: "flex",
                     alignItems: "center",
                     gap: 14,
                 }}
             >
-                <TrendingUp size={38} color="#e63946" className="animate-[float_4s_ease-in-out_infinite]" strokeWidth={2.5} />
-                {c.sectEvolution}
+                <TrendingUp size={38} color="#d92027" className="animate-[float_4s_ease-in-out_infinite]" strokeWidth={2.5} />
+                <span className="section-heading">{c.sectEvolution}</span>
             </h2>
-            <p style={{ font: `italic 600 18px/1.5 ${MONT}`, color: "#3a3a3a", margin: "0 0 32px", textAlign: "justify" }}>{c.narrativeIntro}</p>
+            <p style={{ font: `600 18px/1.6 ${MONT}`, color: "#3a3a3a", margin: "0 0 32px", textAlign: "justify" }}>{c.narrativeIntro}</p>
 
-            <div style={{ position: "relative", maxWidth: 1200, margin: "0 auto" }}>
+            <div className="tree-desktop" style={{ position: "relative", maxWidth: 1200, margin: "0 auto" }}>
                 <svg
                     viewBox="0 0 1200 900"
                     style={{ width: "100%", height: "auto", display: "block" }}
@@ -240,8 +246,8 @@ export default function EvolutionTree() {
                     {/* ===== Badges: điền nội dung 5 giai đoạn ===== */}
                     {badges.map((b, i) => (
                         <g key={i}>
-                            <rect x={b.x} y={b.y} width="222" height="150" rx="26" fill="#F5EFE0" stroke={INK} strokeWidth="5" />
-                            <foreignObject x={b.x + 14} y={b.y + 13} width={194} height={124}>
+                            <rect x={b.x} y={b.y} width="222" height="172" rx="26" fill="#ffffff" stroke={INK} strokeWidth="5" />
+                            <foreignObject x={b.x + 14} y={b.y + 13} width={194} height={146}>
                                 <div
                                     style={{
                                         height: "100%",
@@ -256,9 +262,9 @@ export default function EvolutionTree() {
                                         <span style={{ opacity: 0.65 }}>{b.num}</span> · {b.label}
                                     </div>
                                     {b.sub ? (
-                                        <div style={{ font: `600 13px/1.25 ${MONT}`, color: "#8a7a5a", marginTop: 3 }}>{b.sub}</div>
+                                        <div style={{ font: `600 14px/1.25 ${MONT}`, color: "#888888", marginTop: 3 }}>{b.sub}</div>
                                     ) : null}
-                                    <div style={{ font: `500 13px/1.32 ${MONT}`, color: "#3a3a3a", marginTop: 4 }}>{b.narr}</div>
+                                    <div style={{ font: `400 16px/1.28 ${PATRICK}`, color: "#3a3a3a", marginTop: 4, textAlign: "justify" }}>{b.narr}</div>
                                 </div>
                             </foreignObject>
                             <use href="#sprout" x={b.sproutX} y={b.y} fill={LEAF_MID} />
@@ -268,7 +274,7 @@ export default function EvolutionTree() {
                     {/* Crown badge (golden ring + golden bud) */}
                     <g>
                         <rect x="467" y="24" width="266" height="178" rx="42" fill="none" stroke="#DCC553" strokeWidth="7" />
-                        <rect x="480" y="36" width="240" height="154" rx="34" fill="#F5EFE0" stroke={INK} strokeWidth="6" />
+                        <rect x="480" y="36" width="240" height="154" rx="34" fill="#ffffff" stroke={INK} strokeWidth="6" />
                         <foreignObject x="496" y="52" width="208" height="122">
                             <div
                                 style={{
@@ -293,6 +299,62 @@ export default function EvolutionTree() {
                     </g>
 
                 </svg>
+            </div>
+
+            {/* ===== Danh sách dọc cho mobile ===== */}
+            <div className="tree-mobile">
+                {/* Crown: Open To Work */}
+                <div
+                    style={{
+                        background: "#ffffff",
+                        border: "3px solid #DCC553",
+                        borderRadius: 16,
+                        boxShadow: "5px 5px 0 #000",
+                        padding: "20px 20px",
+                        textAlign: "center",
+                        marginBottom: 22,
+                    }}
+                >
+                    <div style={{ font: `400 30px/1.05 ${BANGERS}`, color: "#B8860B", letterSpacing: "1px" }}>{c.youAreHere}</div>
+                    <div style={{ font: `500 14.5px/1.5 ${MONT}`, color: "#4a4a4a", marginTop: 8 }}>{c.crownText}</div>
+                </div>
+
+                {/* Các giai đoạn (04 -> 00) */}
+                {badges.map((b, i) => (
+                    <div
+                        key={i}
+                        style={{
+                            background: "#fff",
+                            border: "2.5px solid #000",
+                            borderRadius: 14,
+                            boxShadow: `5px 5px 0 ${b.color}`,
+                            padding: "18px 20px",
+                            marginBottom: 18,
+                        }}
+                    >
+                        <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8, flexWrap: "wrap" }}>
+                            <span
+                                style={{
+                                    flexShrink: 0,
+                                    background: b.color,
+                                    color: "#fff",
+                                    font: `400 20px/1 ${BANGERS}`,
+                                    letterSpacing: "1px",
+                                    padding: "6px 12px",
+                                    borderRadius: 8,
+                                    border: "2px solid #000",
+                                }}
+                            >
+                                {b.num}
+                            </span>
+                            <span style={{ font: `400 23px/1.05 ${BANGERS}`, color: b.color, letterSpacing: "0.5px" }}>{b.label}</span>
+                        </div>
+                        {b.sub ? (
+                            <div style={{ font: `600 14px/1.3 ${MONT}`, color: "#888888", marginBottom: 6 }}>{b.sub}</div>
+                        ) : null}
+                        <div style={{ font: `400 18px/1.45 ${PATRICK}`, color: "#333", textAlign: "justify" }}>{b.narr}</div>
+                    </div>
+                ))}
             </div>
         </div>
     );

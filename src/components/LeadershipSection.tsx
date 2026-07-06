@@ -3,9 +3,11 @@
 import { Users } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { getPortfolioContent } from "@/lib/portfolioContent";
+import CaptionBox from "./CaptionBox";
+import PageNumber from "./PageNumber";
 
 const BANGERS = "var(--font-bangers), sans-serif";
-const MONT = "var(--font-montserrat), sans-serif";
+const MONT = "var(--font-nunito), sans-serif";
 
 // Gắn hyperlink cho cụm "JCI Vietnam" xuất hiện trong đoạn mô tả.
 function linkifyJCI(text: string) {
@@ -16,7 +18,7 @@ function linkifyJCI(text: string) {
                 href="https://jci.vn/"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ color: "#e63946", fontWeight: 700, textDecoration: "underline" }}
+                style={{ color: "#0057a8", fontWeight: 700, textDecoration: "underline" }}
             >
                 {part}
             </a>
@@ -31,22 +33,25 @@ export default function LeadershipSection() {
     const c = getPortfolioContent(locale);
 
     return (
-        <div className="rsec" style={{ padding: "56px 48px", borderTop: "4px solid #000" }}>
+        <div className="rsec" style={{ padding: "80px 48px", borderTop: "4px solid #000" }}>
+            <PageNumber n={7} />
+            <CaptionBox text={c.capLeadership} />
             <h2
                 style={{
-                    font: `400 42px/1 ${BANGERS}`,
-                    color: "#1a1a1a",
+                    font: `400 42px/1.15 ${BANGERS}`,
+                    color: "#0d0d0d",
                     margin: "0 0 8px",
-                    letterSpacing: "2px",
+                    letterSpacing: "1.5px",
+                    lineHeight: 1.3,
                     display: "flex",
                     alignItems: "center",
                     gap: 14,
                 }}
             >
-                <Users size={38} color="#e63946" className="animate-[wiggle_3s_ease-in-out_infinite]" strokeWidth={2.5} />
-                {c.sectLead}
+                <Users size={38} color="#d92027" className="animate-[wiggle_3s_ease-in-out_infinite]" strokeWidth={2.5} />
+                <span className="section-heading">{c.sectLead}</span>
             </h2>
-            <p style={{ font: `italic 600 17px/1.5 ${MONT}`, color: "#3a3a3a", margin: "0 0 26px", textAlign: "justify" }}>
+            <p style={{ font: `600 17px/1.6 ${MONT}`, color: "#3a3a3a", margin: "0 0 26px", textAlign: "justify" }}>
                 {linkifyJCI(c.leaderNarrative)}
             </p>
 
@@ -56,10 +61,10 @@ export default function LeadershipSection() {
                         style={{
                             flexShrink: 0,
                             padding: "9px 16px",
-                            background: "#e63946",
+                            background: "#d92027",
                             border: "2.5px solid #000",
                             boxShadow: "3px 3px 0 #000",
-                            font: `italic 400 24px/1.2 ${BANGERS}`,
+                            font: `400 24px/1.2 ${BANGERS}`,
                             color: "#fff",
                             letterSpacing: "1px",
                             textAlign: "center",
@@ -75,7 +80,7 @@ export default function LeadershipSection() {
                                     href={l.link}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    style={{ color: "#1a1a1a", textDecoration: "underline", textDecorationColor: "#e63946" }}
+                                    style={{ color: "#1a1a1a", textDecoration: "underline", textDecorationColor: "#0057a8" }}
                                 >
                                     {l.title}
                                 </a>
@@ -83,16 +88,16 @@ export default function LeadershipSection() {
                                 l.title
                             )}
                         </div>
-                        <div style={{ font: `500 16px/1.55 ${MONT}`, color: "#2f2f2f" }}>{l.desc}</div>
+                        <div style={{ font: `500 16px/1.55 ${MONT}`, color: "#2f2f2f", textAlign: "justify" }}>{l.desc}</div>
                     </div>
                 </div>
             ))}
 
             <div
-                className="lift-hover"
+                className="comic-panel comic-panel-r"
                 style={{
                     padding: "20px 26px",
-                    background: "#fca311",
+                    background: "#ffcc00",
                     border: "3px solid #000",
                     boxShadow: "5px 5px 0 #000",
                     display: "flex",
@@ -105,7 +110,7 @@ export default function LeadershipSection() {
                     <path d="M8,6 L24,6 L24,14 C24,20 20,24 16,24 C12,24 8,20 8,14 Z" fill="#fff" stroke="#000" strokeWidth="1.5" />
                     <rect x="14" y="24" width="4" height="3" fill="#fff" stroke="#000" strokeWidth="1" />
                     <rect x="10" y="27" width="12" height="2" rx="1" fill="#fff" stroke="#000" strokeWidth="1" />
-                    <polygon points="16,9 17.2,12 20,12 17.8,14 18.5,17 16,15.2 13.5,17 14.2,14 12,12 14.8,12" fill="#fca311" />
+                    <polygon points="16,9 17.2,12 20,12 17.8,14 18.5,17 16,15.2 13.5,17 14.2,14 12,12 14.8,12" fill="#ffcc00" />
                 </svg>
                 <div>
                     <p style={{ font: `400 22px/1.3 ${BANGERS}`, color: "#000", margin: 0, letterSpacing: "1px" }}>{c.award}</p>

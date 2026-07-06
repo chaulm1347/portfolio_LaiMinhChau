@@ -10,6 +10,7 @@ interface ComicStickerProps {
     color?: string; // Should be 'bg-comic-primary' or 'bg-comic-secondary'
     rotate?: string; // Tailwind rotate class e.g. 'rotate-12'
     className?: string;
+    textColor?: string; // ghi đè màu chữ (vd nền đỏ cần 'text-white')
 }
 
 const ComicSticker: React.FC<ComicStickerProps> = ({
@@ -19,10 +20,11 @@ const ComicSticker: React.FC<ComicStickerProps> = ({
     color = 'bg-comic-primary',
     rotate = 'rotate-6',
     className = '',
+    textColor,
 }) => {
     // Determine text color based on background
     const isPrimary = color.includes('comic-primary');
-    const textClass = isPrimary ? 'text-white' : 'text-black';
+    const textClass = textColor ?? (isPrimary ? 'text-white' : 'text-black');
     const borderClass = 'border-4 border-black';
     const shadowClass = 'shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]';
 

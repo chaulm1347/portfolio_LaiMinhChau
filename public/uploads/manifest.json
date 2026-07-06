@@ -35,16 +35,16 @@
     "tx": 0,
     "ty": -0.000013168615029091058
   },
-  "avatar": {
-    "url": "/uploads/avatar.jpg",
-    "scale": 1.2,
-    "tx": -3.01723093538563,
-    "ty": 0.8522727863847761
-  },
   "flagship-docs": {
     "url": "/uploads/flagship-docs.jpg",
     "scale": 1,
     "tx": 0,
+    "ty": 0
+  },
+  "avatar": {
+    "url": "/uploads/avatar.jpg",
+    "scale": 1.2,
+    "tx": -3.448286476090174,
     "ty": 0
   }
 }

@@ -4,9 +4,11 @@ import React from "react";
 import { BookMarked } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { getPortfolioContent } from "@/lib/portfolioContent";
+import CaptionBox from "./CaptionBox";
+import PageNumber from "./PageNumber";
 
 const BANGERS = "var(--font-bangers), sans-serif";
-const MONT = "var(--font-montserrat), sans-serif";
+const MONT = "var(--font-nunito), sans-serif";
 
 // In nghiêng các mốc năm (19xx/20xx) xuất hiện trong chuỗi subtitle, đồng bộ toàn thiết kế.
 function italicizeYears(text: string): React.ReactNode {
@@ -20,29 +22,32 @@ export default function ExperienceTimeline() {
     const c = getPortfolioContent(locale);
 
     return (
-        <div className="rsec" style={{ padding: "36px 48px" }}>
+        <div className="rsec" style={{ padding: "80px 48px 36px" }}>
+            <PageNumber n={5} />
+            <CaptionBox text={c.capChapters} />
             <h2
                 style={{
-                    font: `400 42px/1 ${BANGERS}`,
-                    color: "#1a1a1a",
+                    font: `400 42px/1.15 ${BANGERS}`,
+                    color: "#0d0d0d",
                     margin: "0 0 30px",
-                    letterSpacing: "2px",
+                    letterSpacing: "1.5px",
+                    lineHeight: 1.3,
                     display: "flex",
                     alignItems: "center",
                     gap: 14,
                 }}
             >
-                <BookMarked size={38} color="#e63946" className="animate-[wiggle_3s_ease-in-out_infinite]" strokeWidth={2.5} />
-                {c.sectChapters}
+                <BookMarked size={38} color="#d92027" className="animate-[wiggle_3s_ease-in-out_infinite]" strokeWidth={2.5} />
+                <span className="section-heading">{c.sectChapters}</span>
             </h2>
 
             {c.chapters.map((ch, i) => (
                 <div
                     key={i}
-                    className="lift-hover"
+                    className={`comic-panel ${i % 2 === 0 ? "comic-panel-l" : "comic-panel-r"}`}
                     style={{
                         marginBottom: ch.marginBot,
-                        border: "3px solid #000",
+                        border: "3px solid #0d0d0d",
                         boxShadow: `7px 7px 0 ${ch.shadowColor}`,
                         overflow: "hidden",
                     }}
@@ -73,9 +78,11 @@ export default function ExperienceTimeline() {
                                     minWidth: 130,
                                     padding: ch.statPad,
                                     background: ch.statBg,
-                                    border: "2px solid #000",
+                                    backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.18) 1.5px, transparent 1.5px)",
+                                    backgroundSize: "10px 10px",
+                                    border: "3px solid #0d0d0d",
                                     textAlign: "center",
-                                    boxShadow: "2px 2px 0 #000",
+                                    boxShadow: "4px 4px 0 #0d0d0d",
                                 };
                                 const inner = (
                                     <>
@@ -85,14 +92,15 @@ export default function ExperienceTimeline() {
                                                 color: ch.statColor,
                                                 marginBottom: 6,
                                                 letterSpacing: "1px",
+                                                textShadow: "2px 2px 0 #0d0d0d",
                                             }}
                                         >
                                             {st.value}
                                         </div>
                                         <div
                                             style={{
-                                                font: `500 11px/1.3 ${MONT}`,
-                                                color: st.link ? ch.statColor : "#666",
+                                                font: `700 11px/1.3 ${MONT}`,
+                                                color: st.link ? ch.statColor : "#ffffff",
                                                 textTransform: "uppercase",
                                                 letterSpacing: ".3px",
                                                 textDecoration: st.link ? "underline" : "none",

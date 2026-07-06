@@ -2,15 +2,42 @@
 
 /* ===== CSS Variables for Comic Design System ===== */
 :root {
-  --background: #f0f0f0;
-  --foreground: #171717;
+  --background: #f5f3ee;
+  --foreground: #1a1a1a;
 
-  /* Comic Palette: Comic Red primary & warm Amber accent (khớp bản thiết kế HTML) */
-  --comic-primary: #e63946;
-  /* Comic Red - warm, friendly, bold */
-  --comic-secondary: #fca311;
-  /* Amber - warm highlight for small elements only */
-  --comic-dark: #000000;
+  /* === Superman / DC Comics palette === */
+  /* PRIMARY — Superman Blue */
+  --color-primary-50: #e6f0fa;
+  --color-primary-100: #b5d4f4;
+  --color-primary-500: #0057a8;
+  --color-primary-700: #004080;
+  --color-primary-900: #003b73;
+  /* SECONDARY — Superman Red */
+  --color-secondary-50: #fceaea;
+  --color-secondary-100: #f7c1c1;
+  --color-secondary-500: #d92027;
+  --color-secondary-700: #b01a20;
+  --color-secondary-900: #8b1519;
+  /* ACCENT — Superman Yellow */
+  --color-accent-50: #fff8db;
+  --color-accent-100: #ffec80;
+  --color-accent-500: #ffcc00;
+  --color-accent-700: #c49a00;
+  --color-accent-900: #5c4700;
+  /* NEUTRAL */
+  --color-neutral-white: #ffffff;
+  --color-neutral-offwhite: #f5f3ee;
+  --color-neutral-light: #e8e6e0;
+  --color-neutral-mid: #888888;
+  --color-neutral-dark: #1a1a1a;
+  --color-neutral-black: #0d0d0d;
+
+  /* Comic tokens ánh xạ sang palette Superman: primary = Blue, secondary = Yellow accent */
+  --comic-primary: #0057a8;
+  /* Superman Blue - màu chính */
+  --comic-secondary: #ffcc00;
+  /* Superman Yellow - accent */
+  --comic-dark: #0d0d0d;
   /* Black - Text, borders */
   --comic-light: #ffffff;
   /* White - Cards, surfaces */
@@ -26,9 +53,10 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  /* Custom fonts */
-  --font-comic-header: var(--font-bangers), cursive;
-  --font-body: var(--font-montserrat), system-ui, sans-serif;
+  /* Comic fonts: Display (Bangers) · Dialogue (Patrick Hand) · Body (Nunito) */
+  --font-comic-header: var(--font-bangers), "Arial Black", sans-serif;
+  --font-dialogue: var(--font-patrick), "Segoe Print", cursive;
+  --font-body: var(--font-nunito), system-ui, sans-serif;
 
   /* Simplified Comic colors defined in :root */
   --color-comic-primary: var(--comic-primary);
@@ -39,13 +67,13 @@
 
 /* ===== Body Styling with Comic Dot Pattern ===== */
 body {
-  background-color: #f0f0f0;
-  background-image: radial-gradient(#cbd5e1 15%, transparent 16%),
-    radial-gradient(#cbd5e1 15%, transparent 16%);
-  background-size: 20px 20px;
-  background-position: 0 0, 10px 10px;
+  background-color: #f5f3ee;
+  /* Halftone chấm tram xanh — chất giấy in comic */
+  background-image: radial-gradient(circle, rgba(0, 87, 168, 0.12) 2px, transparent 2px);
+  background-size: 22px 22px;
   color: var(--foreground);
   font-family: var(--font-body);
+  line-height: 1.7;
 }
 
 /* ===== Comic Design System Classes ===== */
@@ -83,7 +111,8 @@ body {
 }
 
 .font-body {
-  font-family: var(--font-montserrat), system-ui, sans-serif;
+  font-family: var(--font-nunito), system-ui, sans-serif;
+  line-height: 1.7;
 }
 
 /* ===== Animation Keyframes ===== */
@@ -199,11 +228,29 @@ body {
 }
 
 /* ===== Responsive cho mobile ===== */
+.rsec {
+  position: relative;
+}
+
+/* Ẩn số trang trên màn hình rất hẹp cho đỡ chật */
+@media (max-width: 480px) {
+  .page-number {
+    display: none;
+  }
+}
+
 @media (max-width: 680px) {
-  /* Giảm padding ngang của mọi section */
+  /* Giảm padding ngang của mọi section + bỏ đường kẻ ngang đen (xấu trên mobile) */
   .rsec {
     padding-left: 16px !important;
     padding-right: 16px !important;
+    border-top: none !important;
+  }
+
+  /* Kéo các section gần nhau hơn (trừ Hero & CTA giữ nguyên) */
+  .rsec:not(.rsec-keep) {
+    padding-top: 30px !important;
+    padding-bottom: 30px !important;
   }
 
   /* Co tiêu đề lớn cho vừa màn hình hẹp */
@@ -230,6 +277,169 @@ body {
 @media (max-width: 420px) {
   .rgallery {
     grid-template-columns: 1fr !important;
+  }
+}
+
+/* Cây tiến hóa: luôn hiện cây; mobile hiện thêm danh sách dọc dễ đọc bên dưới */
+.tree-mobile {
+  display: none;
+}
+
+@media (max-width: 680px) {
+  .tree-mobile {
+    display: block;
+    margin-top: 28px;
+  }
+
+  /* Cho cây đủ lớn & cuộn ngang trên mobile để nhìn rõ */
+  .tree-desktop {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .tree-desktop > svg {
+    min-width: 560px;
+  }
+}
+
+/* Tagline hero: to hơn theo bề ngang màn hình & KHÔNG xuống dòng trên desktop rộng.
+   Chỉ áp từ 1440px (đủ chỗ 1 hàng); dưới đó giữ 14px, tự xuống dòng bình thường -> mobile không lỗi. */
+@media (min-width: 1440px) {
+  .hero-tagline {
+    white-space: nowrap;
+    font-size: clamp(15px, 1vw, 20px) !important;
+  }
+}
+
+/* Character stat card */
+.hero-card-body {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 24px;
+  padding: 24px;
+}
+
+@media (max-width: 640px) {
+  .hero-card-body {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stat-fill {
+  transition: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .stat-fill {
+    transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+
+/* Nút trong section "To Be Continued" */
+.tbc-btn {
+  box-shadow: 5px 5px 0 rgba(255, 255, 255, 0.25);
+  transition: transform 0.15s ease;
+}
+
+.tbc-btn:hover {
+  transform: translateY(-3px) rotate(-1deg);
+}
+
+/* Comic panels: nghiêng nhẹ xen kẽ, hover dựng thẳng + nhấc lên */
+.comic-panel {
+  transition: transform 0.2s ease;
+}
+
+.comic-panel-l {
+  transform: rotate(-0.6deg);
+}
+
+.comic-panel-r {
+  transform: rotate(0.5deg);
+}
+
+.comic-panel-l:hover,
+.comic-panel-r:hover {
+  transform: rotate(0deg) translateY(-3px);
+}
+
+@media (max-width: 680px) {
+
+  .comic-panel-l,
+  .comic-panel-r {
+    transform: none;
+  }
+}
+
+/* Scroll reveal (fade-in) — không đụng transform nghiêng, tôn trọng reduced-motion */
+@media (prefers-reduced-motion: no-preference) {
+
+  .comic-panel,
+  .anim-reveal {
+    opacity: 0;
+    transition: opacity 0.55s ease, transform 0.2s ease;
+  }
+
+  .comic-panel.in-view,
+  .anim-reveal.in-view {
+    opacity: 1;
+  }
+}
+
+/* Tiêu đề section: chữ đen sạch + vệt highlight vàng phía sau (bỏ shadow gây nhòe dấu tiếng Việt) */
+.section-heading {
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+}
+
+.section-heading::after {
+  content: "";
+  position: absolute;
+  left: -8px;
+  right: -8px;
+  bottom: 6px;
+  height: 36%;
+  background: #ffcc00;
+  z-index: -1;
+  transform: skewX(-12deg) rotate(-0.5deg);
+}
+
+/* Skill tag hover đổi nền vàng comic */
+.skill-tag-hover {
+  transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.skill-tag-hover:hover {
+  background: #ffcc00 !important;
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 #0d0d0d;
+}
+
+/* ===== Loading screen (comic) ===== */
+#comic-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background-color: #0057a8;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.15) 2px, transparent 2px);
+  background-size: 14px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transition: opacity 0.4s ease;
+}
+
+#comic-loader.done {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes load-fill {
+  to {
+    width: 100%;
   }
 }
 

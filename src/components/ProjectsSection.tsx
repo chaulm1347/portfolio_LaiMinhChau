@@ -4,33 +4,40 @@ import { Gamepad2 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { getPortfolioContent } from "@/lib/portfolioContent";
 import ImageSlot from "./ImageSlot";
+import CaptionBox from "./CaptionBox";
+import PageNumber from "./PageNumber";
 
 const BANGERS = "var(--font-bangers), sans-serif";
-const MONT = "var(--font-montserrat), sans-serif";
+const PATRICK = "var(--font-patrick), cursive";
+const MONT = "var(--font-nunito), sans-serif";
 
 export default function ProjectsSection() {
     const { locale } = useLanguage();
     const c = getPortfolioContent(locale);
 
     return (
-        <div className="rsec" style={{ padding: "36px 48px" }}>
+        <div className="rsec" style={{ padding: "80px 48px 36px" }}>
+            <PageNumber n={4} />
+            <CaptionBox text={c.capProject} />
             <h2
                 style={{
-                    font: `400 42px/1 ${BANGERS}`,
-                    color: "#e63946",
+                    font: `400 42px/1.15 ${BANGERS}`,
+                    color: "#0d0d0d",
                     margin: "0 0 26px",
-                    letterSpacing: "2px",
+                    letterSpacing: "1.5px",
+                    lineHeight: 1.3,
                     display: "flex",
                     alignItems: "center",
                     gap: 14,
                 }}
             >
-                <Gamepad2 size={40} className="animate-[wiggle_3s_ease-in-out_infinite]" strokeWidth={2.5} />★ {c.sectQuest}
+                <Gamepad2 size={40} color="#d92027" className="animate-[wiggle_3s_ease-in-out_infinite]" strokeWidth={2.5} />
+                <span className="section-heading">★ {c.sectQuest}</span>
             </h2>
 
-            <div className="lift-hover" style={{ border: "3px solid #000", boxShadow: "8px 8px 0 #fca311", overflow: "hidden" }}>
+            <div className="comic-panel comic-panel-l" style={{ border: "3px solid #0d0d0d", boxShadow: "8px 8px 0 #ffcc00", overflow: "hidden" }}>
                 {/* TIER 1: Hook */}
-                <div style={{ padding: "30px 34px", background: "#faf5ee", borderBottom: "3px solid #000", position: "relative" }}>
+                <div style={{ padding: "30px 34px", background: "#f5f3ee", borderBottom: "3px solid #000", position: "relative" }}>
                     <div
                         className="animate-pulse-glow-status"
                         style={{
@@ -38,7 +45,7 @@ export default function ProjectsSection() {
                             top: -2,
                             right: 26,
                             padding: "5px 20px",
-                            background: "#e63946",
+                            background: "#d92027",
                             color: "#fff",
                             font: `400 21px/1.3 ${BANGERS}`,
                             letterSpacing: "1px",
@@ -51,12 +58,12 @@ export default function ProjectsSection() {
                     <h3 style={{ font: `400 33px/1.2 ${BANGERS}`, color: "#1a1a1a", margin: "0 0 8px", letterSpacing: "1px" }}>
                         {c.flagshipTitle}
                     </h3>
-                    <p style={{ font: `italic 500 19px/1.5 ${MONT}`, color: "#666", margin: 0 }}>{c.flagshipHook}</p>
+                    <p style={{ font: `400 22px/1.4 ${PATRICK}`, color: "#0057a8", margin: 0 }}>{c.flagshipHook}</p>
                 </div>
 
                 {/* TIER 2: Process Evidence */}
                 <div style={{ padding: "28px 34px", background: "#fff", borderBottom: "3px solid #000" }}>
-                    <div style={{ font: `400 21px/1.2 ${BANGERS}`, color: "#e63946", letterSpacing: "1px", marginBottom: 20 }}>
+                    <div style={{ font: `400 21px/1.2 ${BANGERS}`, color: "#d92027", letterSpacing: "1px", marginBottom: 20 }}>
                         {c.processTitle}
                     </div>
 
@@ -93,17 +100,19 @@ export default function ProjectsSection() {
                                     flex: 1,
                                     minWidth: 110,
                                     padding: 16,
-                                    background: "#fef2f2",
-                                    border: "2px solid #000",
+                                    background: "#0057a8",
+                                    backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.18) 1.5px, transparent 1.5px)",
+                                    backgroundSize: "10px 10px",
+                                    border: "3px solid #0d0d0d",
                                     textAlign: "center",
-                                    boxShadow: "2px 2px 0 #000",
+                                    boxShadow: "4px 4px 0 #0d0d0d",
                                 }}
                             >
-                                <div style={{ font: `400 33px/1 ${BANGERS}`, color: "#e63946", marginBottom: 4 }}>{ps.value}</div>
+                                <div style={{ font: `400 33px/1 ${BANGERS}`, color: "#ffcc00", marginBottom: 4, textShadow: "2px 2px 0 #0d0d0d" }}>{ps.value}</div>
                                 <div
                                     style={{
-                                        font: `500 12px/1.3 ${MONT}`,
-                                        color: "#666",
+                                        font: `700 12px/1.3 ${MONT}`,
+                                        color: "#ffffff",
                                         textTransform: "uppercase",
                                         letterSpacing: ".3px",
                                     }}
@@ -123,13 +132,13 @@ export default function ProjectsSection() {
                             style={{ aspectRatio: "16 / 10", height: "auto", background: "#fafafa", font: `500 14px/1.5 ${MONT}` }}
                         />
                     </div>
-                    <p style={{ font: `italic 400 13px/1.4 ${MONT}`, color: "#aaa", margin: "6px 0 0", textAlign: "center" }}>
+                    <p style={{ font: `400 16px/1.4 ${PATRICK}`, color: "#888888", margin: "6px 0 0", textAlign: "center" }}>
                         {c.docsCaption}
                     </p>
                 </div>
 
                 {/* TIER 3: Teaser Visual */}
-                <div style={{ padding: "22px 34px", background: "#faf5ee", borderBottom: "3px solid #000" }}>
+                <div style={{ padding: "22px 34px", background: "#f5f3ee", borderBottom: "3px solid #000" }}>
                     <div style={{ border: "2px solid #000", boxShadow: "3px 3px 0 #000", overflow: "hidden", position: "relative" }}>
                         <ImageSlot
                             slotId="flagship-teaser"
@@ -147,7 +156,7 @@ export default function ProjectsSection() {
                             }}
                         />
                     </div>
-                    <p style={{ font: `italic 500 14px/1.4 ${MONT}`, color: "#999", margin: "8px 0 0", textAlign: "center" }}>
+                    <p style={{ font: `400 17px/1.4 ${PATRICK}`, color: "#888888", margin: "8px 0 0", textAlign: "center" }}>
                         {c.teaserCaption}
                     </p>
                 </div>

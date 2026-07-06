@@ -62,7 +62,23 @@ export interface LeaderRole {
   link?: string;
 }
 
+export interface HeroCardStat {
+  name: string;
+  value: number;
+}
+
+export interface HeroCard {
+  label: string;
+  id: string;
+  className: string;
+  origin: string;
+  base: string;
+  note: string;
+  stats: HeroCardStat[];
+}
+
 export interface PortfolioContent {
+  heroCard: HeroCard;
   localeBtnLabel: string;
 
   name: string;
@@ -78,6 +94,11 @@ export interface PortfolioContent {
   // Tree
   sectEvolution: string;
   narrativeIntro: string;
+  // Caption dẫn truyện kiểu comic (narration boxes)
+  capOrigin: string;
+  capChapters: string;
+  capProject: string;
+  capLeadership: string;
   youAreHere: string;
   crownText: string;
   evoLabel1: string;
@@ -143,6 +164,14 @@ export interface PortfolioContent {
   sectCta: string;
   ctaMsg: string;
   ctaBtn: string;
+
+  // To Be Continued (trang cuối comic)
+  tbcCaption: string;
+  tbcTitle: string;
+  tbcSubtitle: string;
+  tbcBtnEmail: string;
+  tbcBtnLinkedin: string;
+  tbcFooterNote: string;
 }
 
 export function getPortfolioContent(locale: Locale): PortfolioContent {
@@ -175,10 +204,10 @@ export function getPortfolioContent(locale: Locale): PortfolioContent {
   // ── Chapters (04, 03, 02 NEW, 01) ──
   const chapters: Chapter[] = [
     {
-      chapter: vi ? "CHƯƠNG 04" : "CH.04",
-      bannerBg: "#e63946",
+      chapter: vi ? "CHƯƠNG 04" : "CHAPTER 04",
+      bannerBg: "#d92027",
       bannerText: "#fff",
-      bannerNarr: "rgba(255,255,255,.7)",
+      bannerNarr: "rgba(255,255,255,.85)",
       bannerPad: "14px 26px",
       bannerFont: "26px/1",
       narrative: vi ? "Dẫn dắt delivery sản phẩm AI — từ PRD đến go-live" : "Leading AI product delivery — PRD to go-live",
@@ -187,9 +216,9 @@ export function getPortfolioContent(locale: Locale): PortfolioContent {
       subtitle: vi
         ? "Cộng tác với 1 Công ty trong ngành viễn thông phát triển dự án AI-Agent tích hợp hệ thống · 2025 - 2026"
         : "Collaborated with a telecom company developing an integrated AI-Agent system · 2025 - 2026",
-      shadowColor: "#e63946",
-      statBg: "#fef2f2",
-      statColor: "#e63946",
+      shadowColor: "#d92027",
+      statBg: "#0057a8",
+      statColor: "#ffcc00",
       marginBot: "30px",
       bodyPad: "28px 32px",
       subGap: "22px",
@@ -202,19 +231,19 @@ export function getPortfolioContent(locale: Locale): PortfolioContent {
       ],
     },
     {
-      chapter: vi ? "CHƯƠNG 03" : "CH.03",
-      bannerBg: "#fca311",
-      bannerText: "#000",
-      bannerNarr: "rgba(0,0,0,.5)",
+      chapter: vi ? "CHƯƠNG 03" : "CHAPTER 03",
+      bannerBg: "#d92027",
+      bannerText: "#fff",
+      bannerNarr: "rgba(255,255,255,.85)",
       bannerPad: "14px 26px",
       bannerFont: "26px/1",
       narrative: vi ? "Xây hệ sinh thái từ con số không" : "Building ecosystem from zero",
       title: vi ? "Trưởng phòng Phát triển Đối tác" : "Head of Partner Development",
       titleFont: "22px/1.2",
       subtitle: "Mat Bao Corp · 2024 - 2025",
-      shadowColor: "#fca311",
-      statBg: "#fefaf0",
-      statColor: "#b37400",
+      shadowColor: "#d92027",
+      statBg: "#0057a8",
+      statColor: "#ffcc00",
       marginBot: "30px",
       bodyPad: "28px 32px",
       subGap: "22px",
@@ -237,19 +266,19 @@ export function getPortfolioContent(locale: Locale): PortfolioContent {
       ],
     },
     {
-      chapter: vi ? "CHƯƠNG 02" : "CH.02",
-      bannerBg: "#d4d4d4",
-      bannerText: "#333",
-      bannerNarr: "rgba(0,0,0,.4)",
+      chapter: vi ? "CHƯƠNG 02" : "CHAPTER 02",
+      bannerBg: "#d92027",
+      bannerText: "#fff",
+      bannerNarr: "rgba(255,255,255,.85)",
       bannerPad: "10px 26px",
       bannerFont: "21px/1",
       narrative: vi ? "Khởi nghiệp cùng cộng sự" : "Entrepreneurship with co-founders",
       title: vi ? "Co-founder" : "Co-founder",
       titleFont: "19px/1.2",
       subtitle: "2024",
-      shadowColor: "#d4d4d4",
-      statBg: "#f5f5f5",
-      statColor: "#666",
+      shadowColor: "#d92027",
+      statBg: "#0057a8",
+      statColor: "#ffcc00",
       marginBot: "30px",
       bodyPad: "16px 26px",
       subGap: "12px",
@@ -258,19 +287,19 @@ export function getPortfolioContent(locale: Locale): PortfolioContent {
       stats: [{ value: vi ? "Dừng lại" : "Stopped", label: vi ? "vì thiếu vốn" : "due to lack of funding" }],
     },
     {
-      chapter: vi ? "CHƯƠNG 01" : "CH.01",
-      bannerBg: "#4ade80",
-      bannerText: "#000",
-      bannerNarr: "rgba(0,0,0,.45)",
+      chapter: vi ? "CHƯƠNG 01" : "CHAPTER 01",
+      bannerBg: "#d92027",
+      bannerText: "#fff",
+      bannerNarr: "rgba(255,255,255,.85)",
       bannerPad: "14px 26px",
       bannerFont: "26px/1",
       narrative: vi ? "Xây nền tảng vận hành startup từ đầu" : "Building startup ops from scratch",
       title: vi ? "Giám đốc Vận hành" : "Operations Director",
       titleFont: "22px/1.2",
       subtitle: "IMARU Co., Ltd. · 2022 - 2024",
-      shadowColor: "#4ade80",
-      statBg: "#f0fcf4",
-      statColor: "#1a7a3a",
+      shadowColor: "#d92027",
+      statBg: "#0057a8",
+      statColor: "#ffcc00",
       marginBot: "30px",
       bodyPad: "28px 32px",
       subGap: "22px",
@@ -285,12 +314,12 @@ export function getPortfolioContent(locale: Locale): PortfolioContent {
 
   // ── Flagship 4-tier data ──
   const sprintTimeline: SprintStep[] = [
-    { label: "Concept", bg: "#fef2f2", color: "#e63946", arrow: true },
-    { label: "GDD v1", bg: "#fef2f2", color: "#e63946", arrow: true },
-    { label: "Prototype", bg: "#fef2f2", color: "#e63946", arrow: true },
-    { label: "Playtest", bg: "#e63946", color: "#fff", arrow: true },
-    { label: "GDD v3", bg: "#fef2f2", color: "#e63946", arrow: true },
-    { label: "Dev Handoff", bg: "#e63946", color: "#fff", arrow: false },
+    { label: "Concept", bg: "#e6f0fa", color: "#0057a8", arrow: true },
+    { label: "GDD v1", bg: "#e6f0fa", color: "#0057a8", arrow: true },
+    { label: "Prototype", bg: "#e6f0fa", color: "#0057a8", arrow: true },
+    { label: "Playtest", bg: "#d92027", color: "#fff", arrow: true },
+    { label: "GDD v3", bg: "#e6f0fa", color: "#0057a8", arrow: true },
+    { label: "Dev Handoff", bg: "#d92027", color: "#fff", arrow: false },
   ];
 
   const processStats: ProcessStat[] = [
@@ -301,10 +330,10 @@ export function getPortfolioContent(locale: Locale): PortfolioContent {
   ];
 
   const roleTags: RoleTag[] = [
-    { label: "Product Owner", bg: "#e63946", color: "#fff" },
-    { label: "Scrum", bg: "#fca311", color: "#000" },
-    { label: "Game Design", bg: "#4ade80", color: "#000" },
-    { label: "AI-augmented", bg: "#4cc9f0", color: "#000" },
+    { label: "Product Owner", bg: "#d92027", color: "#fff" },
+    { label: "Scrum", bg: "#ffcc00", color: "#5c4700" },
+    { label: "Game Design", bg: "#0057a8", color: "#fff" },
+    { label: "AI-augmented", bg: "#b5d4f4", color: "#003b73" },
   ];
 
   // ── Skills ──
@@ -390,6 +419,23 @@ export function getPortfolioContent(locale: Locale): PortfolioContent {
   return {
     localeBtnLabel: vi ? "EN" : "VI",
 
+    heroCard: {
+      label: vi ? "HỒ SƠ NHÂN VẬT" : "CHARACTER FILE",
+      id: "#LMC-1347",
+      className: vi ? "LỚP: PRODUCT OWNER" : "CLASS: PRODUCT OWNER",
+      origin: vi ? "KHỞI NGUỒN: STEM → CẦU NỐI KINH DOANH" : "ORIGIN: STEM → BUSINESS BRIDGE",
+      base: vi ? "CĂN CỨ: TP. HỒ CHÍ MINH" : "BASE: HO CHI MINH CITY",
+      note: vi ? "* Tự đánh giá. Đã kiểm chứng thực chiến." : "* Self-assessed. Battle-tested in production.",
+      stats: [
+        { name: vi ? "KẾT NỐI" : "NETWORKING", value: 90 },
+        { name: vi ? "QUẢN LÝ STAKEHOLDER" : "STAKEHOLDER MGMT", value: 80 },
+        { name: vi ? "LÃNH ĐẠO ĐỘI NGŨ" : "TEAM LEADERSHIP", value: 80 },
+        { name: vi ? "TRIỂN KHAI SẢN PHẨM" : "PRODUCT DELIVERY", value: 70 },
+        { name: vi ? "QUẢN TRỊ DỰ ÁN" : "PROJECT MANAGEMENT", value: 70 },
+        { name: vi ? "ỨNG DỤNG AI" : "AI APPLICATION", value: 70 },
+      ],
+    },
+
     name: vi ? "Lại Minh Châu" : "Lai Minh Chau",
     email: "chau.lm1347@gmail.com",
     phone: "(+84) 971 528 015",
@@ -411,6 +457,20 @@ export function getPortfolioContent(locale: Locale): PortfolioContent {
           "Not limiting myself to the discipline and logic forged in a STEM environment, I chose to pursue a path of connecting people and systems — step by step becoming a bridge between Business and Technology problems, knowing full well the challenges ahead.",
           "I believe the milestones and numbers I’ve passed are the most authentic pieces that thread together my story of an aspiration to keep rising in any circumstance. And who knows — perhaps the value I bring is the missing piece to co-create and lead the change through innovation that you’re looking for?",
         ],
+
+    // Caption dẫn truyện (comic narration)
+    capOrigin: vi
+      ? "MỌI CON ĐƯỜNG ĐỀU DẪN VỀ THÀNH ROME..."
+      : "ALL ROADS LEAD TO ROME...",
+    capChapters: vi
+      ? "CÙNG TUA LẠI CÂU CHUYỆN..."
+      : "LET'S REWIND THE STORY...",
+    capProject: vi
+      ? "HÀNH TRÌNH VẠN DẶM BẮT ĐẦU TỪ MỘT BƯỚC CHÂN..."
+      : "A JOURNEY OF A THOUSAND MILES BEGINS WITH A SINGLE STEP...",
+    capLeadership: vi
+      ? "KHOAN ĐÃ — CHƯA HẾT! NGOÀI CÔNG VIỆC CHÍNH..."
+      : "BUT WAIT — THERE'S MORE! BEYOND THE DAY JOB...",
 
     // Tree
     sectEvolution: vi ? "HÀNH TRÌNH TIẾN HÓA" : "EVOLUTION PATH",
@@ -437,7 +497,7 @@ export function getPortfolioContent(locale: Locale): PortfolioContent {
     evoNarr5,
 
     // Journey photos
-    galleryLabel: vi ? "📸 HÀNH TRÌNH PHÁT TRIỂN" : "📸 GROWTH JOURNEY",
+    galleryLabel: vi ? "📸 MADE, NOT BORN — TÔI LUYỆN NÊN TÔI" : "📸 MADE, NOT BORN",
     photoLabel1: vi ? "Ảnh 1" : "Photo 1",
     photoLabel2: vi ? "Ảnh 2" : "Photo 2",
     photoLabel3: vi ? "Ảnh 3" : "Photo 3",
@@ -526,5 +586,15 @@ export function getPortfolioContent(locale: Locale): PortfolioContent {
     sectCta: vi ? "SẴN SÀNG HỢP TÁC?" : "READY TO COLLABORATE?",
     ctaMsg: vi ? "Hãy kết nối với tôi nếu bạn thấy điểm chạm!" : "Connect with me if you see a match!",
     ctaBtn: vi ? "LIÊN HỆ NGAY" : "GET IN TOUCH",
+
+    // To Be Continued
+    tbcCaption: vi
+      ? "VÀ THẾ LÀ, CÂU CHUYỆN ĐI ĐẾN TRANG CUỐI..."
+      : "AND SO, THE STORY REACHES ITS FINAL PAGE...",
+    tbcTitle: "TO BE CONTINUED...",
+    tbcSubtitle: vi ? "TẠI CÔNG TY CỦA BẠN?" : "IN YOUR COMPANY?",
+    tbcBtnEmail: vi ? "GỬI EMAIL NGAY!" : "EMAIL ME NOW!",
+    tbcBtnLinkedin: vi ? "XEM LINKEDIN" : "VIEW LINKEDIN",
+    tbcFooterNote: "LMC COMICS · ISSUE #01 · FIRST PRINTING · 2026",
   };
 }
