@@ -289,7 +289,7 @@ export default function EvolutionTree() {
                                 }}
                             >
                                 <div style={{ font: `400 38px/1 ${BANGERS}`, color: "#B8860B", letterSpacing: "1px" }}>{c.youAreHere}</div>
-                                <div style={{ font: `500 13.5px/1.32 ${MONT}`, color: "#4a4a4a", marginTop: 8 }}>{c.crownText}</div>
+                                <div style={{ font: `400 15px/1.3 ${PATRICK}`, color: "#3a3a3a", marginTop: 8, textAlign: "center" }}>{c.crownText}</div>
                             </div>
                         </foreignObject>
                         <path d="M 600 36 C 599 28 600 22 603 16" fill="none" stroke={INK} strokeWidth="3" strokeLinecap="round" />
@@ -316,7 +316,7 @@ export default function EvolutionTree() {
                     }}
                 >
                     <div style={{ font: `400 30px/1.05 ${BANGERS}`, color: "#B8860B", letterSpacing: "1px" }}>{c.youAreHere}</div>
-                    <div style={{ font: `500 14.5px/1.5 ${MONT}`, color: "#4a4a4a", marginTop: 8 }}>{c.crownText}</div>
+                    <div style={{ font: `400 17px/1.45 ${PATRICK}`, color: "#3a3a3a", marginTop: 8 }}>{c.crownText}</div>
                 </div>
 
                 {/* Các giai đoạn (04 -> 00) */}

@@ -1,10 +1,11 @@
 "use client";
 
-import { Rocket } from "lucide-react";
+import { Rocket, Handshake, Milestone } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { getPortfolioContent } from "@/lib/portfolioContent";
 import ImageSlot from "./ImageSlot";
 import StarburstBadge from "./StarburstBadge";
+import ComicSticker from "./ComicSticker";
 
 const BANGERS = "var(--font-bangers), sans-serif";
 const MONT = "var(--font-nunito), sans-serif";
@@ -33,6 +34,26 @@ export default function HeroSection() {
             >
                 <div className="animate-[float_5s_ease-in-out_infinite_0.5s]">
                     <StarburstBadge text="DELIVER!" bgColor="#0057a8" textColor="#ffcc00" rotation={8} size={120} />
+                </div>
+            </div>
+
+            {/* Icon tròn ROADMAP (trái) & Handshake (phải) — bay lơ lửng, ghim ngang hàng ô summary */}
+            <div
+                aria-hidden="true"
+                className="hidden xl:block"
+                style={{ position: "absolute", left: -40, top: 600, zIndex: 0, pointerEvents: "none" }}
+            >
+                <div className="animate-[float_5.5s_ease-in-out_infinite_0.3s]">
+                    <ComicSticker type="circle" icon={Milestone} color="bg-[#d92027]" textColor="text-white" rotate="rotate-3" />
+                </div>
+            </div>
+            <div
+                aria-hidden="true"
+                className="hidden xl:block"
+                style={{ position: "absolute", right: -40, top: 600, zIndex: 0, pointerEvents: "none" }}
+            >
+                <div className="animate-[float_4.5s_ease-in-out_infinite_0.7s]">
+                    <ComicSticker type="circle" icon={Handshake} color="bg-comic-primary" rotate="-rotate-6" />
                 </div>
             </div>
 

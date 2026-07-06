@@ -178,9 +178,9 @@ export function getPortfolioContent(locale: Locale): PortfolioContent {
   const vi = locale === "vi";
 
   // ── Tree labels (NO numbers) ──
-  const evoLabel1 = vi ? "KHỞI NGUỒN" : "ORIGIN";
+  const evoLabel1 = vi ? "KHỞI NGUỒN" : "BACKGROUND";
   const evoLabel2 = vi ? "COO START-UP" : "COO STARTUP";
-  const evoLabel3 = vi ? "KHỞI NGHIỆP" : "VENTURE";
+  const evoLabel3 = vi ? "KHỞI NGHIỆP" : "START-UP";
   const evoLabel4 = vi ? "HEAD OF PD" : "HEAD OF PD";
   const evoLabel5 = vi ? "PRODUCT DELIVERY" : "PRODUCT DELIVERY";
 
@@ -214,8 +214,8 @@ export function getPortfolioContent(locale: Locale): PortfolioContent {
       title: vi ? "Điều phối Dự án & Triển khai (AI)" : "Project Coordination & Delivery (AI)",
       titleFont: "22px/1.2",
       subtitle: vi
-        ? "Cộng tác với 1 Công ty trong ngành viễn thông phát triển dự án AI-Agent tích hợp hệ thống · 2025 - 2026"
-        : "Collaborated with a telecom company developing an integrated AI-Agent system · 2025 - 2026",
+        ? "Cộng tác với 1 Công ty trong ngành viễn thông phát triển dự án AI-Agent tích hợp hệ thống · Project-based"
+        : "Collaborated with a telecom company developing an integrated AI-Agent system · Project-based",
       shadowColor: "#d92027",
       statBg: "#0057a8",
       statColor: "#ffcc00",
@@ -423,7 +423,7 @@ export function getPortfolioContent(locale: Locale): PortfolioContent {
       label: vi ? "HỒ SƠ NHÂN VẬT" : "CHARACTER FILE",
       id: "#LMC-1347",
       className: vi ? "LỚP: PRODUCT OWNER" : "CLASS: PRODUCT OWNER",
-      origin: vi ? "KHỞI NGUỒN: STEM → CẦU NỐI KINH DOANH" : "ORIGIN: STEM → BUSINESS BRIDGE",
+      origin: vi ? "KHỞI NGUỒN: STEM → CẦU NỐI KINH DOANH & CÔNG NGHỆ" : "ORIGIN: STEM → BUSINESS & TECH BRIDGE",
       base: vi ? "CĂN CỨ: TP. HỒ CHÍ MINH" : "BASE: HO CHI MINH CITY",
       note: vi ? "* Tự đánh giá. Đã kiểm chứng thực chiến." : "* Self-assessed. Battle-tested in production.",
       stats: [
@@ -523,7 +523,7 @@ export function getPortfolioContent(locale: Locale): PortfolioContent {
     roleTags,
 
     // Chapters
-    sectChapters: vi ? "CÁC CHƯƠNG SỰ NGHIỆP" : "CAREER CHAPTERS",
+    sectChapters: vi ? "CÁC CHƯƠNG SỰ NGHIỆP" : "CAREER PATH",
     chapters,
 
     // Skills

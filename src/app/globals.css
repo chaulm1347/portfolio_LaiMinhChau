@@ -74,6 +74,8 @@ body {
   color: var(--foreground);
   font-family: var(--font-body);
   line-height: 1.7;
+  /* Chặn tràn ngang do sticker trang trí ghim lệch mép (không ảnh hưởng cuộn dọc) */
+  overflow-x: hidden;
 }
 
 /* ===== Comic Design System Classes ===== */
@@ -268,13 +270,7 @@ body {
     padding: 26px 18px 24px !important;
   }
 
-  /* Gallery: 5 cột -> 2 cột cho dễ nhìn trên mobile */
-  .rgallery {
-    grid-template-columns: 1fr 1fr !important;
-  }
-}
-
-@media (max-width: 420px) {
+  /* Gallery: mobile về 1 cột — mỗi ảnh full-width khớp đúng tỷ lệ gốc, không lệch khung */
   .rgallery {
     grid-template-columns: 1fr !important;
   }

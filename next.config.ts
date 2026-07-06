@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  /* Ẩn huy hiệu Next.js (logo "N") ở góc màn hình khi chạy dev */
+  devIndicators: false,
 };
 
 export default nextConfig;

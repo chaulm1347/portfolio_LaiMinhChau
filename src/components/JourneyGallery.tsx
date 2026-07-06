@@ -42,8 +42,9 @@ export default function JourneyGallery() {
                         display: "grid",
                         // độ rộng mỗi cột tỉ lệ với aspect -> mọi khung cùng chiều cao & khớp tỷ lệ ảnh
                         gridTemplateColumns: aspects.map((a) => `${a}fr`).join(" "),
-                        gap: 0,
-                        background: "#f5f3ee",
+                        // khe đen tự tạo vạch ngăn ở mọi layout (desktop 1 hàng / mobile 1 cột)
+                        gap: 3,
+                        background: "#000",
                     }}
                 >
                     {photos.map((label, i) => (
@@ -56,7 +57,6 @@ export default function JourneyGallery() {
                                 height: "auto",
                                 background: "#f5f3ee",
                                 font: `500 15px/1.5 ${MONT}`,
-                                borderRight: i < photos.length - 1 ? "2px solid #000" : undefined,
                             }}
                         />
                     ))}
