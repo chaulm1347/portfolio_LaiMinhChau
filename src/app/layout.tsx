@@ -50,9 +50,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Lại Minh Châu" }],
   openGraph: {
-    title: "Lại Minh Châu - Product Owner",
+    title: "Lại Minh Châu | Portfolio",
     description:
-      "Product Owner & Delivery Coordinator — B2B AI product delivery and partner ecosystem development.",
+      "Portfolio of Lại Minh Châu - Product Owner & Project Manager . B2B AI product delivery, partner ecosystem development, and cross-functional coordination.",
     type: "website",
   },
 };
