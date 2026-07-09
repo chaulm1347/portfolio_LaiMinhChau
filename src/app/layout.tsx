@@ -33,9 +33,9 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Lại Minh Châu - Product Owner | Portfolio",
+  title: "Lại Minh Châu | Portfolio",
   description:
-    "Portfolio of Lại Minh Châu - Product Owner & Delivery Coordinator. B2B AI product delivery, partner ecosystem development, and cross-functional coordination.",
+    "Portfolio of Lại Minh Châu - Product Owner & Project Manager . B2B AI product delivery, partner ecosystem development, and cross-functional coordination.",
   keywords: [
     "Product Owner",
     "Lại Minh Châu",
