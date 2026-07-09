@@ -32,10 +32,15 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
+const SITE_URL = "https://portfolio-lai-minh-chau.vercel.app";
+const SITE_TITLE = "Lại Minh Châu | Portfolio";
+const SITE_DESCRIPTION =
+  "Portfolio of Lại Minh Châu - Product Owner & Project Manager. B2B AI product delivery, partner ecosystem development, and cross-functional coordination.";
+
 export const metadata: Metadata = {
-  title: "Lại Minh Châu | Portfolio",
-  description:
-    "Portfolio of Lại Minh Châu - Product Owner & Project Manager . B2B AI product delivery, partner ecosystem development, and cross-functional coordination.",
+  metadataBase: new URL(SITE_URL),
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
   keywords: [
     "Product Owner",
     "Lại Minh Châu",
@@ -50,10 +55,26 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Lại Minh Châu" }],
   openGraph: {
-    title: "Lại Minh Châu | Portfolio",
-    description:
-      "Portfolio of Lại Minh Châu - Product Owner & Project Manager . B2B AI product delivery, partner ecosystem development, and cross-functional coordination.",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+    siteName: "Lại Minh Châu Portfolio",
+    locale: "vi_VN",
     type: "website",
+    images: [
+      {
+        url: "/uploads/avatar.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Lại Minh Châu - Portfolio",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    images: ["/uploads/avatar.jpg"],
   },
 };
 
